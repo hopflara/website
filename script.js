@@ -38,7 +38,8 @@ document.querySelectorAll(".item img").forEach(function (img) {
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!reduceMotion) {
-  document.querySelectorAll(".float").forEach(function (el) {
+  // (The photostrip is full-height and flush to the edges, so it stays put.)
+  document.querySelectorAll(".item:not(.item--strip) .float").forEach(function (el) {
     gsap.to(el, {
       y: gsap.utils.random(-12, -6),      // drift up a little
       duration: gsap.utils.random(2.5, 4),
