@@ -10,6 +10,23 @@ console.log("GSAP loaded:", gsap.version);
 // ---------------------------------------------------------------
 document.querySelectorAll(".item img").forEach(function (img) {
   img.addEventListener("error", function () {
+    var src = img.getAttribute("src");
+
+    // First failure: retry with the extension's capitalization flipped
+    // (e.g. .png <-> .PNG). GitHub Pages is case-sensitive, so this
+    // rescues images uploaded as .PNG when the code asked for .png.
+    if (!img.dataset.retried) {
+      img.dataset.retried = "1";
+      var swapped = src.replace(/\.png$/i, function (ext) {
+        return ext === ".png" ? ".PNG" : ".png";
+      });
+      if (swapped !== src) {
+        img.src = swapped;
+        return;
+      }
+    }
+
+    // Still no luck: show a labeled placeholder box.
     img.closest(".item").classList.add("missing");
   });
 });
