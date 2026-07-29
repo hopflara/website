@@ -1,6 +1,5 @@
 /* ---------------------------------------------------------------
-   Basic reset — gives you a true blank canvas, edge to edge.
-   No design here on purpose.
+   Basic reset — a true blank canvas, edge to edge.
 --------------------------------------------------------------- */
 * {
   margin: 0;
@@ -14,19 +13,180 @@ body {
   height: 100%;
 }
 
+body {
+  background: #fdfcfb;              /* soft off-white, like the inspiration */
+  font-family: "Courier New", ui-monospace, monospace;
+  color: #333;
+  overflow: hidden;                /* homepage is one full screen, no scroll */
+}
+
+/* ---------------------------------------------------------------
+   The canvas: a full-viewport stage the items float on.
+--------------------------------------------------------------- */
+.canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ---------------------------------------------------------------
+   "back home" link used on the inner pages
+--------------------------------------------------------------- */
+.back {
+  position: fixed;
+  top: 1.4rem;
+  left: 1.4rem;
+  z-index: 20;
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  color: #d63384;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------
+   Center title
+--------------------------------------------------------------- */
+.title-block {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;            /* clicks pass through to items behind */
+  z-index: 5;
+}
+
+.title {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  color: #d63384;                  /* pink */
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.title .heart {
+  font-size: 0.8em;
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  font-size: clamp(0.6rem, 1vw, 0.85rem);
+  letter-spacing: 0.06em;
+  color: #d63384;
+  text-transform: lowercase;
+}
+
+/* ---------------------------------------------------------------
+   Items: each is a clickable link.
+   Three nested layers so animations never fight each other:
+     .item   -> position + static rotation (--rot)
+     .float  -> GSAP gentle floating (translateY)
+     .scaler -> hover scale
+--------------------------------------------------------------- */
+.item {
+  position: absolute;
+  display: block;
+  transform: rotate(var(--rot, 0deg));
+  text-decoration: none;
+  z-index: 2;
+}
+
+.float {
+  display: block;
+}
+
+.scaler {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  z-index: 10;                     /* hovered item jumps to the front */
+}
+
+.item:hover .scaler {
+  transform: scale(1.07);
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* The photostrip is sized by height instead of width */
+.item--strip img {
+  width: auto;
+  height: 100%;
+}
+
+/* Small handwritten caption under each item */
+.label {
+  display: block;
+  margin-top: 0.4rem;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: clamp(0.85rem, 1.3vw, 1.15rem);
+  color: #b5657f;
+  opacity: 0;                      /* hidden until you hover the item */
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.item:hover .label {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------
+   Placeholder shown when an image file is missing.
+   (Disappears automatically once you add the real image.)
+--------------------------------------------------------------- */
+.item.missing img {
+  display: none;
+}
+
+.item.missing .scaler {
+  min-width: 90px;
+  min-height: 90px;
+  border: 2px dashed #e6a7bd;
+  border-radius: 10px;
+  background: #fff6fa;
+  padding: 1.2rem 0.6rem;
+}
+
+.item.missing .label {
+  opacity: 1;                      /* always show the name on placeholders */
+  color: #d63384;
+}
+
+/* ---------------------------------------------------------------
+   Smaller screens: scale the whole collage down a little and
+   let it scroll if needed, so nothing gets clipped.
+--------------------------------------------------------------- */
+@media (max-width: 700px) {
+  body {
+    overflow: auto;
+  }
+  .title {
+    white-space: normal;
+  }
+  .label {
+    opacity: 1;                    /* labels always visible on touch devices */
+  }
+}
+
 /* ---------------------------------------------------------------
    Accessibility: respect users who prefer less motion.
-   Put motion-sensitive overrides here later.
+   (script.js also skips the floating animation when this is set.)
 --------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  /* Example (uncomment / adapt when you add animations):
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .scaler,
+  .label {
+    transition: none;
   }
-  */
 }

@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Site</title>
+  <title>hi! i'm Laura!</title>
+
+  <!-- Handwritten font for the title (CDN, no build step) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
 
   <!-- GSAP core + plugins (ScrollTrigger, Draggable) via CDN -->
@@ -12,7 +18,79 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
 </head>
 <body>
-  <!-- Blank canvas. Build everything here through follow-up prompts. -->
+  <main class="canvas">
+
+    <!-- Center title -->
+    <div class="title-block" style="left:41%; top:45%;">
+      <h1 class="title">hi! i'm Laura! <span class="heart">&#9825;</span></h1>
+      <p class="subtitle">welcome to my little corner of the internet :)</p>
+    </div>
+
+    <!-- Photostrip: full height, right edge -->
+    <a class="item item--strip" href="photos.html" style="right:4%; top:2%; height:96vh;">
+      <span class="float"><span class="scaler">
+        <img src="images/photostrip.png" alt="film photostrip of Laura" />
+        <span class="label">photos</span>
+      </span></span>
+    </a>
+
+    <!-- Phone: top left -->
+    <a class="item" href="social.html" style="left:8%; top:11%; width:10vw; --rot:-9deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/phone.png" alt="phone" />
+        <span class="label">my social media</span>
+      </span></span>
+    </a>
+
+    <!-- Poem / open book: top center -->
+    <a class="item" href="poems.html" style="left:37%; top:15%; width:19vw; --rot:-2deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/poem.png" alt="open book of poems" />
+        <span class="label">all my poems</span>
+      </span></span>
+    </a>
+
+    <!-- Book stack: top right -->
+    <a class="item" href="books.html" style="left:60%; top:16%; width:16vw; --rot:3deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/books.png" alt="stack of books" />
+        <span class="label">the books i loved</span>
+      </span></span>
+    </a>
+
+    <!-- Resume / blue folder: left center -->
+    <a class="item" href="resume.html" style="left:11%; top:56%; width:12vw; --rot:-4deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/resume.png" alt="folder holding my resume" />
+        <span class="label">my resume</span>
+      </span></span>
+    </a>
+
+    <!-- brainlist / butterfly checklist: center left -->
+    <a class="item" href="brainlist.html" style="left:31%; top:72%; width:14vw; --rot:2deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/brainlist.png" alt="butterfly checklist" />
+        <span class="label">my ADHD calendar app</span>
+      </span></span>
+    </a>
+
+    <!-- evidio / flask: bottom center -->
+    <a class="item" href="evidio.html" style="left:50%; top:76%; width:8vw; --rot:-3deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/evidio.png" alt="evidio flask" />
+        <span class="label">evidio &mdash; my source-based social platform</span>
+      </span></span>
+    </a>
+
+    <!-- Motivation buddy: center right -->
+    <a class="item" href="buddy.html" style="left:64%; top:54%; width:12vw; --rot:0deg;">
+      <span class="float"><span class="scaler">
+        <img src="images/buddy.png" alt="motivation buddy" />
+        <span class="label">a motivation buddy i made</span>
+      </span></span>
+    </a>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
