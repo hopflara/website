@@ -144,7 +144,7 @@ body {
    so the whole strip fits on screen top-to-bottom. */
 .item--strip img {
   width: auto;
-  height: 96vh;                    /* a touch under full height so it's fully visible */
+  height: 92vh;                    /* a touch under full height so it (and its label) fit */
 }
 
 /* Small handwritten caption under each item — always visible,
