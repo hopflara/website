@@ -48,6 +48,81 @@ body {
 }
 
 /* ---------------------------------------------------------------
+   Pill button (e.g. the "Privacy Policy" link)
+--------------------------------------------------------------- */
+.pill-btn {
+  position: fixed;
+  z-index: 20;
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  color: #ffffff;
+  background: #d63384;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(214, 51, 132, 0.3);
+}
+
+.pill-btn:hover {
+  background: #b52a6e;
+}
+
+.pill-btn.top-right {
+  top: 1.4rem;
+  right: 1.4rem;
+}
+
+/* ---------------------------------------------------------------
+   Document pages (privacy policy, etc.) — a readable column that
+   is allowed to scroll (the homepage stays fixed/no-scroll).
+--------------------------------------------------------------- */
+body.page {
+  overflow: auto;
+}
+
+.doc {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+.doc h1 {
+  font-family: "Caveat", cursive;
+  color: #d63384;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.doc h2 {
+  color: #d63384;
+  font-size: 1.2rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.doc .updated {
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.doc p,
+.doc li {
+  margin-bottom: 0.8rem;
+}
+
+.doc ul {
+  padding-left: 1.4rem;
+}
+
+.doc a {
+  color: #d63384;
+}
+
+/* ---------------------------------------------------------------
    Center title
 --------------------------------------------------------------- */
 .title-block {

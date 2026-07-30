@@ -97,6 +97,7 @@ function smoothThrough(p) {
 }
 
 function drawConnectors() {
+  if (!svg) return;               // inner pages have no arrows layer
   svg.setAttribute("viewBox", "0 0 " + window.innerWidth + " " + window.innerHeight);
   connectors.forEach(function (c) {
     if (!c.target) return;
