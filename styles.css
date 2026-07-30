@@ -236,6 +236,26 @@ body {
   cursor: grab;
 }
 
+/* The middle title is grabbable in edit mode as well */
+.edit-mode .title-block {
+  pointer-events: auto;
+  cursor: grab;
+  outline: 2px dashed rgba(214, 51, 132, 0.55);
+  outline-offset: 8px;
+}
+
+.edit-mode .title-block:active {
+  cursor: grabbing;
+}
+
+/* A note being edited (after double-click) */
+.note.editing {
+  outline: 2px solid #d63384;
+  background: #ffffff;
+  cursor: text;
+  padding: 2px 4px;
+}
+
 .edit-panel {
   position: fixed;
   top: 12px;
@@ -255,6 +275,14 @@ body {
   color: #d63384;
   margin-bottom: 8px;
   font-size: 13px;
+  cursor: move;                    /* drag the panel by its title bar */
+  user-select: none;
+}
+
+.edit-hint {
+  font-size: 11px;
+  color: #b5657f;
+  margin: -2px 0 8px;
 }
 
 .edit-readout {
