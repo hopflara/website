@@ -20,75 +20,92 @@
 <body>
   <main class="canvas">
 
-    <!-- Center title (middle of the page, items ringed around it) -->
-    <div class="title-block" style="left:34%; top:46%;">
+    <!-- Hand-drawn arrows connecting each note to its picture (drawn by script.js) -->
+    <svg class="connectors" aria-hidden="true" preserveAspectRatio="none">
+      <defs>
+        <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="5.5" refY="3"
+                orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#d63384"></path>
+        </marker>
+      </defs>
+    </svg>
+
+    <!-- Center title -->
+    <div class="title-block" style="left:50%; top:50%;">
       <h1 class="title">hi! i'm Lara<span class="excl-heart"><span class="dot">&#9825;</span><span class="stem"></span></span></h1>
       <p class="subtitle">welcome to my little corner of the internet :)</p>
     </div>
 
+    <!-- ======================= PICTURES ======================= -->
+
     <!-- Photostrip: full viewport height, flush to the right edge -->
-    <a class="item item--strip" href="photos.html" style="right:1%; top:2%;">
+    <a class="item item--strip" id="i-photos" data-name="photos" href="photos.html" style="right:1%; top:2%;">
       <span class="float"><span class="scaler">
         <img src="images/photostrip.png" alt="film photostrip of Lara" />
-        <span class="label">photos</span>
       </span></span>
     </a>
 
-    <!-- Phone: top left -->
-    <a class="item" href="social.html" style="left:4%; top:3%; width:9.5vw; --rot:-9deg;">
+    <!-- Phone -->
+    <a class="item" id="i-phone" data-name="phone" href="social.html" style="left:4%; top:3%; width:9.5vw; --rot:-9deg;">
       <span class="float"><span class="scaler">
         <img src="images/phone.png" alt="phone" />
-        <span class="label">my socials (not an influencer, yet)</span>
       </span></span>
     </a>
 
-    <!-- Poem / open book: top center -->
-    <a class="item" href="poems.html" style="left:27%; top:4%; width:19vw; --rot:-2deg;">
+    <!-- Poem / open book -->
+    <a class="item" id="i-poem" data-name="poem" href="poems.html" style="left:27%; top:4%; width:19vw; --rot:-2deg;">
       <span class="float"><span class="scaler">
         <img src="images/poem.png" alt="open book of poems" />
-        <span class="label">all my poems</span>
       </span></span>
     </a>
 
-    <!-- Book stack: top right (kept clear of the photostrip lane) -->
-    <a class="item" href="books.html" style="left:55%; top:6%; width:16vw; --rot:3deg;">
+    <!-- Book stack -->
+    <a class="item" id="i-books" data-name="books" href="books.html" style="left:55%; top:6%; width:16vw; --rot:3deg;">
       <span class="float"><span class="scaler">
         <img src="images/books.png" alt="stack of books" />
-        <span class="label">the books i loved</span>
       </span></span>
     </a>
 
-    <!-- Resume / blue folder: left middle -->
-    <a class="item" href="resume.html" style="left:4%; top:40%; width:10vw; --rot:-4deg;">
+    <!-- Resume / blue folder -->
+    <a class="item" id="i-resume" data-name="resume" href="resume.html" style="left:4%; top:40%; width:10vw; --rot:-4deg;">
       <span class="float"><span class="scaler">
         <img src="images/resume.png" alt="folder holding my resume" />
-        <span class="label">my resume</span>
       </span></span>
     </a>
 
-    <!-- Motivation buddy: right middle (kept clear of the photostrip lane) -->
-    <a class="item" href="buddy.html" style="left:65%; top:40%; width:11vw; --rot:0deg;">
+    <!-- Motivation buddy -->
+    <a class="item" id="i-buddy" data-name="buddy" href="buddy.html" style="left:65%; top:40%; width:11vw; --rot:0deg;">
       <span class="float"><span class="scaler">
         <img src="images/buddy.png" alt="motivation buddy" />
-        <span class="label">a motivation buddy i made</span>
       </span></span>
     </a>
 
-    <!-- brainlist / butterfly checklist: bottom left -->
-    <a class="item" href="brainlist.html" style="left:38%; top:66%; width:13vw; --rot:2deg;">
+    <!-- brainlist / butterfly checklist -->
+    <a class="item" id="i-brainlist" data-name="brainlist" href="brainlist.html" style="left:38%; top:66%; width:13vw; --rot:2deg;">
       <span class="float"><span class="scaler">
         <img src="images/brainlist.png" alt="butterfly checklist" />
-        <span class="label">my ADHD calendar app</span>
       </span></span>
     </a>
 
-    <!-- evidio / flask: bottom center -->
-    <a class="item" href="evidio.html" style="left:57%; top:70%; width:8.5vw; --rot:-3deg;">
+    <!-- evidio / flask -->
+    <a class="item" id="i-evidio" data-name="evidio" href="evidio.html" style="left:57%; top:70%; width:8.5vw; --rot:-3deg;">
       <span class="float"><span class="scaler">
         <img src="images/evidio.png" alt="evidio flask" />
-        <span class="label">evidio &mdash; my source-based social platform</span>
       </span></span>
     </a>
+
+    <!-- ==================== NOTES (captions) ====================
+         Each note points to a picture via data-for. Drag them freely
+         in #edit mode; the arrows re-connect automatically. -->
+
+    <div class="note" data-for="i-phone"     style="left:14%; top:24%;">my socials (not an influencer, yet)</div>
+    <div class="note" data-for="i-poem"      style="left:24%; top:36%;">all my poems</div>
+    <div class="note" data-for="i-books"     style="left:60%; top:38%;">the books i loved</div>
+    <div class="note" data-for="i-resume"    style="left:16%; top:54%;">my resume</div>
+    <div class="note" data-for="i-buddy"     style="left:66%; top:72%;">a motivation buddy i made</div>
+    <div class="note" data-for="i-brainlist" style="left:20%; top:80%;">my ADHD calendar app</div>
+    <div class="note" data-for="i-evidio"    style="left:66%; top:88%;">evidio &mdash; my source-based social platform</div>
+    <div class="note" data-for="i-photos"    style="left:80%; top:90%;">photos</div>
 
   </main>
 

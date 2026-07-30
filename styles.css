@@ -147,21 +147,42 @@ body {
   height: 92vh;                    /* a touch under full height so it (and its label) fit */
 }
 
-/* Small handwritten caption under each item — always visible,
-   centered on the item regardless of the item's width. */
-.label {
-  display: block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+/* ---------------------------------------------------------------
+   Notes: the handwritten captions. Each is its own element, placed
+   anywhere, connected to its picture by a hand-drawn arrow.
+--------------------------------------------------------------- */
+.note {
+  position: absolute;
   width: 12rem;
-  margin-top: 0.45rem;
   text-align: center;
   font-family: "Caveat", cursive;
-  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
   line-height: 1.05;
-  color: #b5657f;
-  pointer-events: none;
+  color: #d63384;
+  pointer-events: none;            /* clicks pass through in normal mode */
+  z-index: 6;
+}
+
+/* ---------------------------------------------------------------
+   Connector arrows (SVG overlay across the whole canvas)
+--------------------------------------------------------------- */
+.connectors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;            /* never blocks clicks */
+  z-index: 1;                      /* behind pictures and notes */
+  overflow: visible;
+}
+
+.connector {
+  fill: none;
+  stroke: #d63384;
+  stroke-width: 2.2;
+  stroke-linecap: round;
 }
 
 /* ---------------------------------------------------------------
@@ -178,12 +199,6 @@ body {
   border: 2px dashed #e6a7bd;
   border-radius: 10px;
   background: #fff6fa;
-  padding: 1.2rem 0.6rem;
-}
-
-.item.missing .label {
-  opacity: 1;                      /* always show the name on placeholders */
-  color: #d63384;
 }
 
 /* ---------------------------------------------------------------
@@ -197,9 +212,6 @@ body {
   .title {
     white-space: normal;
   }
-  .label {
-    opacity: 1;                    /* labels always visible on touch devices */
-  }
 }
 
 /* ---------------------------------------------------------------
@@ -211,8 +223,17 @@ body {
   cursor: grab;
 }
 
-.edit-mode .item:active {
+.edit-mode .item:active,
+.edit-mode .note:active {
   cursor: grabbing;
+}
+
+/* In edit mode the notes become grabbable too */
+.edit-mode .note {
+  outline: 2px dashed rgba(214, 51, 132, 0.55);
+  outline-offset: 3px;
+  pointer-events: auto;
+  cursor: grab;
 }
 
 .edit-panel {
@@ -272,8 +293,7 @@ body {
    (script.js also skips the floating animation when this is set.)
 --------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .scaler,
-  .label {
+  .scaler {
     transition: none;
   }
 }
