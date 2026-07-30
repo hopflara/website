@@ -3,17 +3,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>evidio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+  <title>Evidio — education, not addiction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --pink:#d63384;
+      --pink-dark:#b02167;
+      --ink:#2a2528;
+      --ink-2:#6b5a63;
+      --bg:#fdfcfb;
+      --tint:rgba(214,51,132,.08);
+      --line:rgba(214,51,132,.18);
+      --display:"Caveat", cursive;
+      --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      background:var(--bg);
+      background-image:
+        radial-gradient(120% 70% at 50% -10%, rgba(214,51,132,.10), transparent 55%),
+        radial-gradient(80% 60% at 100% 0%, rgba(245,168,205,.18), transparent 55%);
+      background-attachment:fixed; background-repeat:no-repeat;
+      color:var(--ink);
+      font-family:var(--sans);
+      font-size:17px; line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    .back{
+      position:fixed; top:1rem; left:1rem; z-index:10;
+      font-family:var(--display); font-size:1.35rem; font-weight:700;
+      color:var(--pink); text-decoration:none;
+      background:#fff; border:1px solid var(--line);
+      padding:.15rem .8rem; border-radius:999px; box-shadow:0 2px 8px rgba(214,51,132,.12);
+    }
+    .back:hover{ background:var(--tint); }
+
+    .wrap{ max-width:780px; margin:0 auto; padding:5rem 1.5rem 5rem; }
+
+    /* hero */
+    .hero{ text-align:center; margin-bottom:2.5rem; }
+    .hero h1{
+      font-family:var(--display); font-weight:700;
+      color:var(--pink);
+      font-size:clamp(4rem, 14vw, 7rem);
+      line-height:.85; margin:0;
+    }
+    .tagline{
+      font-size:clamp(1.15rem, 2.6vw, 1.5rem);
+      color:var(--ink-2); max-width:32ch; margin:1rem auto 1.2rem;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:.5em;
+      background:var(--tint); color:var(--pink-dark);
+      border:1px solid var(--line);
+      padding:.4em 1em; border-radius:999px;
+      font-size:.9rem; font-weight:600;
+    }
+
+    /* sections */
+    section{ margin-top:2.8rem; }
+    h2{
+      font-family:var(--display); font-weight:700;
+      color:var(--pink);
+      font-size:clamp(2.1rem, 5vw, 2.7rem);
+      line-height:1; margin:0 0 .6rem;
+    }
+    p{ margin:.7rem 0; }
+    strong{ color:var(--ink); }
+
+    /* how it works — numbered step cards */
+    .steps{ list-style:none; counter-reset:step; margin:1rem 0 0; padding:0; }
+    .steps li{
+      counter-increment:step;
+      display:flex; align-items:flex-start; gap:.9rem;
+      background:#fff; border:1px solid var(--line);
+      border-radius:14px; padding:.9rem 1.1rem; margin:.6rem 0;
+      box-shadow:0 2px 10px rgba(214,51,132,.06);
+    }
+    .steps li::before{
+      content:counter(step);
+      flex:none; width:2rem; height:2rem; border-radius:50%;
+      background:var(--pink); color:#fff;
+      display:grid; place-items:center; font-weight:700; font-family:var(--sans);
+    }
+
+    /* check list */
+    .checklist{ list-style:none; margin:1rem 0 0; padding:0; }
+    .checklist li{ position:relative; padding-left:1.9em; margin:.5em 0; }
+    .checklist li::before{
+      content:"\2713"; position:absolute; left:0; top:0;
+      color:var(--pink); font-weight:700;
+    }
+
+    /* callout / cta */
+    .cta{
+      text-align:center; margin-top:1.4rem;
+      background:var(--tint); border:1px solid var(--line);
+      border-radius:20px; padding:1.8rem 1.4rem;
+    }
+    .btn{
+      display:inline-block; margin-top:.4rem;
+      background:var(--pink); color:#fff; text-decoration:none;
+      font-weight:700; font-size:1.15rem;
+      padding:.85em 1.7em; border-radius:999px;
+      box-shadow:0 6px 18px rgba(214,51,132,.28);
+      transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ background:var(--pink-dark); transform:translateY(-2px); box-shadow:0 10px 24px rgba(214,51,132,.34); }
+
+    .contact{ text-align:center; }
+    .contact a{ color:var(--pink); font-weight:700; text-decoration:none; }
+    .contact a:hover{ text-decoration:underline; }
+    .contact .lines{ font-size:1.1rem; margin-top:.4rem; }
+
+    a.link{ color:var(--pink); font-weight:600; }
+  </style>
 </head>
 <body>
   <a class="back" href="index.html">&larr; back home</a>
-  <!-- Blank canvas for: evidio, my source-based social platform. Build this page later. -->
 
-  <script src="script.js"></script>
+  <main class="wrap">
+
+    <div class="hero">
+      <h1>Evidio</h1>
+      <p class="tagline">A social media platform intended for education, not addiction.</p>
+      <span class="badge">&#10003; every claim, source-verified</span>
+    </div>
+
+    <section>
+      <h2>What is it?</h2>
+      <p>Evidio is a short-form content platform where every video is <strong>source-verified before it's published</strong>. Every claim must be backed by a credible source (e.g. a peer-reviewed paper). Content passes AI fact-checking and is then reviewed by at least three real-life experts in the relevant field — giving you a feed that leaves you smarter than before you opened the app.</p>
+    </section>
+
+    <section>
+      <h2>The problem</h2>
+      <p>Social media platforms optimize for what keeps you scrolling, not for helpful, educational content. Meta eliminated its fact-checkers in January 2025. TikTok rewards outrage and novelty. My entire generation is getting their knowledge from random 60-second clips, where misinformation and real education matter equally little — as long as it's entertaining.</p>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>A creator uploads a video with peer-reviewed sources.</li>
+        <li>An AI model performs an initial fact-check against the cited sources.</li>
+        <li>At least 3 verified domain experts review and approve the content.</li>
+        <li>Only then does it enter the feed.</li>
+      </ol>
+      <p>Users select the topics they want to learn about — the feed is then organized by topic, not by virality.</p>
+      <p>Instead of likes and follower counts, users build a <strong>contribution score</strong> based on how many videos they review, how many they post, how helpful their content is rated, and how actively they engage with questions. Useful behavior gets rewarded. Addictive behavior doesn't.</p>
+    </section>
+
+    <section>
+      <h2>Business model</h2>
+      <ul class="checklist">
+        <li><strong>Free for users!</strong></li>
+        <li>Freemium subscription (no ads, advanced search, offline viewing, citation export)</li>
+        <li>Institutional licensing for universities and research organizations</li>
+        <li>API access to the verified content database for publishers and researchers</li>
+        <li>Grant funding from science communication and civic-tech foundations</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Who am I?</h2>
+      <p><strong>Lara Hopf</strong> — Biology graduate from Berlin, living in Toronto. Familiar with scientific literature and obsessed with this idea — and exactly the person this platform is for.</p>
+      <p>I want to build it, because it should already exist. I'm actively applying for science communication grants and building a network of early reviewers.</p>
+    </section>
+
+    <section>
+      <h2>What I'm looking for</h2>
+      <div class="cta">
+        <p>People to join the waitlist, proving demand for this project — thank you so much! &#128156;</p>
+        <a class="btn" href="https://tally.so/r/0Qzyzy" target="_blank" rel="noopener">Join the waitlist</a>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Get in touch!</h2>
+      <div class="lines">
+        <a href="mailto:getevidio@gmail.com">getevidio@gmail.com</a><br />
+        <a href="https://getevidio.com/" target="_blank" rel="noopener">getevidio.com</a>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
