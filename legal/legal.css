@@ -116,7 +116,7 @@ a:hover{ text-decoration:underline; text-underline-offset:2px; }
   -webkit-backdrop-filter:blur(8px) saturate(1.1);
   backdrop-filter:blur(8px) saturate(1.1);
 }
-.brand-mark .leaf{ width:32px; height:32px; display:block; }
+.brand-mark .leaf{ width:40px; height:40px; display:block; object-fit:contain; }
 .brand-text{ display:flex; flex-direction:column; line-height:1.12; }
 .brand-name{ font-family:var(--display); font-size:1.95rem; font-weight:700; letter-spacing:0; }
 .brand-kicker{
@@ -382,7 +382,7 @@ pre code{ background:none; border:0; padding:0; }
   display:flex; align-items:center; gap:9px;
   margin:0 0 .7em; font-weight:700; color:var(--ink);
 }
-.foot-brand .leaf{ width:20px; height:20px; }
+.foot-brand .leaf{ width:22px; height:22px; object-fit:contain; }
 .foot-inner a{ color:var(--accent-ink); font-weight:600; }
 .foot-inner .note{ max-width:60ch; }
 .to-top{ display:inline-block; margin-top:1em; font-weight:700; }
