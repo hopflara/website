@@ -35,6 +35,25 @@ Inspect → Console) and you should see a line like `GSAP loaded: 3.12.5`.
 5. Wait a minute, then refresh — GitHub shows the live URL at the top of the
    Pages settings (something like `https://your-username.github.io/website/`).
 
+## Moving the homepage items (drag mode)
+
+You don't have to edit code to rearrange the homepage. Add `#edit` to the end
+of your site's address and press Enter, e.g.:
+
+```
+https://your-username.github.io/website/#edit
+```
+
+A little panel appears and every item gets a dashed outline. Now you can:
+
+1. **Drag** any item wherever you want it.
+2. Watch the panel — it shows each item's `left`/`top` position live.
+3. Click **Copy positions** to copy them all, then paste them back (into
+   `index.html`, or just send them to Claude to apply).
+4. Click **exit** (or remove `#edit` from the address) to go back to normal.
+
+Normal visitors never see this — it only turns on with `#edit`.
+
 ## Custom domain (optional, later)
 
 When you're ready to use your own domain (e.g. `yourname.com`):
