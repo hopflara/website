@@ -203,6 +203,71 @@ body {
 }
 
 /* ---------------------------------------------------------------
+   Drag mode (only active when the URL ends with #edit).
+--------------------------------------------------------------- */
+.edit-mode .item {
+  outline: 2px dashed rgba(214, 51, 132, 0.55);
+  outline-offset: 4px;
+  cursor: grab;
+}
+
+.edit-mode .item:active {
+  cursor: grabbing;
+}
+
+.edit-panel {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  background: #ffffff;
+  border: 2px solid #d63384;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  font-family: "Courier New", monospace;
+  max-width: 340px;
+}
+
+.edit-panel-title {
+  font-weight: bold;
+  color: #d63384;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.edit-readout {
+  white-space: pre;
+  overflow: auto;
+  max-height: 52vh;
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.edit-copy {
+  font-family: inherit;
+  font-size: 12px;
+  background: #d63384;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+.edit-copy:hover {
+  background: #b52a6e;
+}
+
+.edit-exit {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #b5657f;
+}
+
+/* ---------------------------------------------------------------
    Accessibility: respect users who prefer less motion.
    (script.js also skips the floating animation when this is set.)
 --------------------------------------------------------------- */
