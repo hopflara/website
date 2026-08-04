@@ -9,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --pink:#d63384;
-      --pink-dark:#b02167;
-      --ink:#2a2528;
-      --ink-2:#6b5a63;
-      --bg:#fdfcfb;
-      --tint:rgba(214,51,132,.08);
-      --line:rgba(214,51,132,.18);
+      /* Evidio green (matches the legal pages + flask logo) */
+      --pink:#003646;          /* primary teal-green accent */
+      --pink-dark:#00252f;     /* darker hover */
+      --ink:#2a4a56;
+      --ink-2:#5e8898;
+      --bg:#fbfaf7;
+      --tint:rgba(0,54,70,.08);
+      --line:rgba(0,54,70,.18);
       --display:"Caveat", cursive;
       --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
@@ -25,8 +26,8 @@
       margin:0;
       background:var(--bg);
       background-image:
-        radial-gradient(120% 70% at 50% -10%, rgba(214,51,132,.10), transparent 55%),
-        radial-gradient(80% 60% at 100% 0%, rgba(245,168,205,.18), transparent 55%);
+        radial-gradient(120% 70% at 50% -10%, rgba(0,54,70,.09), transparent 55%),
+        radial-gradient(80% 60% at 100% 0%, rgba(107,168,190,.16), transparent 55%);
       background-attachment:fixed; background-repeat:no-repeat;
       color:var(--ink);
       font-family:var(--sans);
@@ -38,7 +39,7 @@
       font-family:var(--display); font-size:1.35rem; font-weight:700;
       color:var(--pink); text-decoration:none;
       background:#fff; border:1px solid var(--line);
-      padding:.15rem .8rem; border-radius:999px; box-shadow:0 2px 8px rgba(214,51,132,.12);
+      padding:.15rem .8rem; border-radius:999px; box-shadow:0 2px 8px rgba(0,54,70,.12);
     }
     .back:hover{ background:var(--tint); }
 
@@ -46,11 +47,11 @@
     .pp-btn{
       position:fixed; top:1rem; right:1rem; z-index:10;
       font-family:var(--sans); font-size:.95rem; font-weight:700;
-      color:#fff; background:#0a463c; text-decoration:none;
+      color:#fff; background:var(--pink); text-decoration:none;
       padding:.5rem 1rem; border-radius:999px;
-      box-shadow:0 3px 12px rgba(10,70,60,.30);
+      box-shadow:0 3px 12px rgba(0,54,70,.28);
     }
-    .pp-btn:hover{ background:#0d5a4c; }
+    .pp-btn:hover{ background:var(--pink-dark); }
 
     .wrap{ max-width:780px; margin:0 auto; padding:5rem 1.5rem 5rem; }
 
@@ -120,10 +121,10 @@
       background:var(--pink); color:#fff; text-decoration:none;
       font-weight:700; font-size:1.15rem;
       padding:.85em 1.7em; border-radius:999px;
-      box-shadow:0 6px 18px rgba(214,51,132,.28);
+      box-shadow:0 6px 18px rgba(0,54,70,.28);
       transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease;
     }
-    .btn:hover{ background:var(--pink-dark); transform:translateY(-2px); box-shadow:0 10px 24px rgba(214,51,132,.34); }
+    .btn:hover{ background:var(--pink-dark); transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,54,70,.34); }
 
     .contact{ text-align:center; }
     .contact a{ color:var(--pink); font-weight:700; text-decoration:none; }
@@ -135,7 +136,7 @@
 </head>
 <body>
   <a class="back" href="index.html">&larr; back home</a>
-  <a class="pp-btn" href="evidio/legal/privacy.html">Privacy Policy</a>
+  <a class="pp-btn" href="evidio/legal/evidio-privacy.html">Privacy Policy</a>
 
   <main class="wrap">
 
@@ -187,7 +188,7 @@
     <section>
       <h2>What I'm looking for</h2>
       <div class="cta">
-        <p>People to join the waitlist, proving demand for this project — thank you so much! &#128156;</p>
+        <p>People to join the waitlist, proving demand for this project — thank you so much! &#128154;</p>
         <a class="btn" href="https://tally.so/r/0Qzyzy" target="_blank" rel="noopener">Join the waitlist</a>
       </div>
     </section>
