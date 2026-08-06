@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use (EULA) for Evidio</title>
+<meta name="description" content="Terms of Use and End User License Agreement for Evidio: eligibility, accounts, acceptable use and zero tolerance for objectionable content, your submissions and expert review, disclaimers, and Apple-required terms.">
+<style>
+:root{
+  --sage:#003646; --sage-ink:#003646; --slate:#6ba8be; --gold:#89bd98;
+  --success:#00463e; --amber:#C9832B; --danger:#b91c1c;
+  --bg:#fbfaf7; --surface:#FFFFFF; --surface-2:#e6eef1; --ink:#2a4a56; --ink-2:#5e8898;
+  --accent:var(--sage); --accent-ink:var(--sage-ink);
+  --line:rgba(0,54,70,.12); --line-soft:rgba(0,54,70,.07);
+  --glass:rgba(255,255,255,.66); --glass-strong:rgba(255,255,255,.82);
+  --tint:rgba(0,54,70,.08); --tint-2:rgba(107,168,190,.12); --gold-tint:rgba(137,189,152,.18);
+  --zebra:rgba(0,54,70,.04); --ring:rgba(0,54,70,.42);
+  --shadow-sm:0 1px 2px rgba(28,27,23,.05), 0 1px 3px rgba(28,27,23,.06);
+  --shadow:0 6px 22px rgba(28,27,23,.08), 0 2px 6px rgba(28,27,23,.05);
+  --shadow-lg:0 18px 48px rgba(28,27,23,.12), 0 6px 16px rgba(28,27,23,.07);
+  --r-sm:10px; --r:16px; --r-lg:20px; --maxw:760px; --pad:clamp(16px,4vw,28px);
+  --font:ui-rounded,-apple-system,BlinkMacSystemFont,"SF Pro Rounded","SF Pro",system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --display:var(--font); --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:24px; }
+body{
+  margin:0; min-height:100vh; min-height:100dvh; font-family:var(--font); font-size:17px; line-height:1.65;
+  color:var(--ink); background-color:var(--bg);
+  background-image:
+    radial-gradient(120% 80% at 50% -20%, rgba(0,54,70,.08), transparent 55%),
+    radial-gradient(90% 70% at 100% -8%, rgba(107,168,190,.16), transparent 55%),
+    radial-gradient(85% 60% at 0% 0%, rgba(0,70,62,.08), transparent 50%);
+  background-attachment:fixed; background-repeat:no-repeat; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img,svg{ vertical-align:middle; } img{ max-width:100%; height:auto; }
+a{ color:var(--accent-ink); text-decoration:none; }
+a:hover{ text-decoration:underline; text-underline-offset:2px; }
+:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; border-radius:6px; }
+::selection{ background:var(--tint); color:var(--ink); }
+.container{ width:100%; max-width:var(--maxw); margin-inline:auto; padding:clamp(24px,5vw,44px) var(--pad) 64px; }
+.corner-nav{ position:fixed; top:12px; left:12px; z-index:60; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.corner-btn{ display:inline-flex; align-items:center; gap:.35em; padding:.4em .85em; border-radius:999px; background:var(--surface); color:var(--accent-ink); border:1px solid var(--line); box-shadow:var(--shadow-sm); font-size:.95rem; font-weight:700; line-height:1; text-decoration:none; white-space:nowrap; }
+.corner-btn:hover{ background:var(--tint); text-decoration:none; }
+@media (max-width:560px){ .corner-btn{ font-size:.85rem; padding:.35em .7em; } }
+.site-header{ padding:clamp(20px,4vw,32px) var(--pad) 14px; }
+.brand{ display:flex; align-items:center; gap:14px; max-width:var(--maxw); margin-inline:auto; color:var(--ink); width:fit-content; }
+.brand-mark{ display:grid; place-items:center; width:52px; height:52px; flex:none; border-radius:16px; font-size:26px; background:var(--glass-strong); border:1px solid var(--line-soft); box-shadow:var(--shadow-sm); -webkit-backdrop-filter:blur(8px) saturate(1.1); backdrop-filter:blur(8px) saturate(1.1); }
+.brand-text{ display:flex; flex-direction:column; line-height:1.12; }
+.brand-name{ font-family:var(--display); font-size:1.9rem; font-weight:800; letter-spacing:-.02em; color:var(--accent-ink); }
+.brand-kicker{ margin-top:1px; font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); }
+h1{ font-family:var(--display); font-size:clamp(2.1rem,5vw,3rem); line-height:1.05; font-weight:800; letter-spacing:-.02em; margin:0 0 .3em; color:var(--accent-ink); }
+.lead{ font-size:1.18rem; line-height:1.6; color:var(--ink-2); margin:0 0 1.5em; max-width:64ch; }
+h2{ font-size:clamp(1.35rem,3vw,1.6rem); line-height:1.22; font-weight:700; letter-spacing:-.01em; margin:0 0 .55em; color:var(--accent-ink); }
+h3{ font-size:1.12rem; font-weight:700; margin:1.6em 0 .4em; color:var(--ink); }
+p{ margin:0 0 1.05em; } strong,b{ font-weight:700; color:var(--ink); }
+section.block{ margin-top:42px; scroll-margin-top:24px; }
+section.block > h2{ position:relative; padding-left:16px; }
+section.block > h2::before{ content:""; position:absolute; left:0; top:.16em; bottom:.16em; width:5px; border-radius:999px; background:linear-gradient(180deg, var(--sage), var(--slate)); }
+.toc{ margin:0 0 8px; padding:18px 20px; background:var(--glass-strong); border:1px solid var(--line-soft); border-radius:var(--r-lg); box-shadow:var(--shadow-sm); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+.toc > :first-child{ margin-top:0; }
+.toc p{ margin:0 0 .5rem; font-size:.76rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2); }
+.toc ul{ list-style:none; margin:0; padding:0; } .toc li{ margin:.3rem 0; break-inside:avoid; } .toc a{ color:var(--accent-ink); font-weight:600; }
+@media (min-width:560px){ .toc ul{ columns:2; column-gap:28px; } }
+.card{ margin:1.2em 0; padding:clamp(18px,3.5vw,26px); background:var(--glass-strong); border:1px solid var(--line-soft); border-radius:var(--r-lg); box-shadow:var(--shadow); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1); }
+.card > :first-child{ margin-top:0; } .card > :last-child{ margin-bottom:0; }
+.pill{ display:inline-flex; align-items:center; gap:.4em; padding:.28em .72em; border-radius:999px; font-size:.78rem; font-weight:700; line-height:1; letter-spacing:.02em; color:var(--accent-ink); background:var(--tint); border:1px solid rgba(0,54,70,.20); vertical-align:middle; white-space:nowrap; }
+.note{ margin:1em 0; padding:.7em .95em .7em 1em; font-size:.92rem; color:var(--ink-2); background:var(--gold-tint); border-left:3px solid var(--gold); border-radius:0 var(--r-sm) var(--r-sm) 0; }
+.muted{ color:var(--ink-2); font-size:.94em; }
+ul,ol{ padding-left:1.3em; margin:1em 0; } li{ margin:.4em 0; } li::marker{ color:var(--accent); }
+ul.clean{ list-style:none; margin:1em 0; padding:0; }
+ul.clean > li{ position:relative; padding-left:1.6em; margin:.5em 0; }
+ul.clean > li::before{ content:""; position:absolute; left:.2em; top:.62em; width:.5em; height:.5em; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--tint); }
+table.data{ width:100%; margin:1.3em 0; border-collapse:separate; border-spacing:0; border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:var(--surface); box-shadow:var(--shadow-sm); font-size:.96rem; }
+table.data th, table.data td{ text-align:left; vertical-align:top; padding:11px 14px; border-bottom:1px solid var(--line-soft); }
+table.data thead th{ background:var(--tint); color:var(--ink); font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; border-bottom:1px solid var(--line); }
+table.data tbody tr:nth-child(even) td{ background:var(--zebra); } table.data tbody tr:last-child td{ border-bottom:0; }
+@media (max-width:600px){ table.data{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--r-sm); } table.data th, table.data td{ min-width:8.5rem; } }
+a.btn,.btn{ display:inline-flex; align-items:center; gap:.55em; padding:.8em 1.3em; border-radius:999px; background:var(--accent); color:#fff; font:inherit; font-weight:700; font-size:1rem; line-height:1; border:1px solid transparent; cursor:pointer; box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.18); transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+a.btn:hover,.btn:hover{ background:#00252f; text-decoration:none; transform:translateY(-1px); box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.2); }
+a.btn:active,.btn:active{ transform:translateY(0); }
+code{ font-family:var(--mono); font-size:.9em; padding:.12em .45em; border-radius:6px; background:var(--surface-2); color:var(--ink); border:1px solid var(--line-soft); }
+.site-footer{ margin-top:48px; border-top:1px solid var(--line); background:var(--glass); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+.foot-inner{ max-width:var(--maxw); margin-inline:auto; padding:30px var(--pad) 42px; color:var(--ink-2); font-size:.95rem; }
+.foot-inner p{ margin:.4em 0; }
+.foot-brand{ display:flex; align-items:center; gap:9px; margin:0 0 .7em; font-weight:800; color:var(--accent-ink); }
+.foot-inner a{ color:var(--accent-ink); font-weight:600; } .foot-inner .note{ max-width:60ch; }
+.to-top{ display:inline-block; margin-top:1em; font-weight:700; }
+@media (max-width:560px){ body{ font-size:16px; } .brand-mark{ width:46px; height:46px; font-size:22px; } .brand-name{ font-size:1.65rem; } }
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; } }
+@media (prefers-color-scheme:dark){
+  :root{
+    --sage:#5fb0c6; --sage-ink:#8fd0e0; --slate:#6ba8be; --gold:#89bd98;
+    --bg:#0c1e24; --surface:#12262d; --surface-2:#183038; --ink:#e7f1f4; --ink-2:#9db9c3;
+    --line:rgba(231,241,244,.16); --line-soft:rgba(231,241,244,.09);
+    --glass:rgba(18,38,45,.62); --glass-strong:rgba(18,38,45,.80);
+    --tint:rgba(95,176,198,.15); --tint-2:rgba(107,168,190,.15); --gold-tint:rgba(137,189,152,.14);
+    --zebra:rgba(95,176,198,.07); --ring:rgba(95,176,198,.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.40); --shadow:0 6px 22px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.35); --shadow-lg:0 18px 48px rgba(0,0,0,.55);
+  }
+  body{ background-image:
+    radial-gradient(120% 80% at 50% -20%, rgba(95,176,198,.10), transparent 55%),
+    radial-gradient(90% 70% at 100% -8%, rgba(107,168,190,.14), transparent 55%),
+    radial-gradient(85% 60% at 0% 0%, rgba(137,189,152,.10), transparent 50%); }
+  a.btn,.btn{ color:#0c1e24; } a.btn:hover,.btn:hover{ background:#8fd0e0; }
+}
+</style>
+</head>
+<body id="top">
+<nav class="corner-nav" aria-label="Return links">
+  <a class="corner-btn" href="https://getevidio.com">&larr; go back to Evidio</a>
+</nav>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🧪</span>
+    <span class="brand-text">
+      <span class="brand-name">Evidio</span>
+      <span class="brand-kicker">Legal</span>
+    </span>
+  </div>
+</header>
+
+<main class="container">
+<h1>Terms of Use (EULA)</h1>
+<p class="lead">These Terms of Use, which also serve as the End User License Agreement, govern your use of Evidio. Please read them carefully. By using Evidio, you agree to them.</p>
+<p><span class="pill">Terms of Use</span> <span class="pill">End User License Agreement</span></p>
+<p class="muted">Effective date: <strong>17 July 2026</strong> &middot; Last updated: <strong>17 July 2026</strong> &middot; Applies to Evidio on iOS and the Evidio website.</p>
+
+<nav class="toc" aria-label="On this page">
+  <p>On this page</p>
+  <ul>
+    <li><a href="#agreement">1. Agreement to these terms</a></li>
+    <li><a href="#eligibility">2. Eligibility</a></li>
+    <li><a href="#your-account">3. Your account</a></li>
+    <li><a href="#license">4. Licence to use Evidio</a></li>
+    <li><a href="#acceptable-use">5. Acceptable use &amp; zero tolerance</a></li>
+    <li><a href="#your-content">6. Your content &amp; submissions</a></li>
+    <li><a href="#review">7. Automated AI check, expert review &amp; no professional advice</a></li>
+    <li><a href="#advertising">8. No advertising</a></li>
+    <li><a href="#intellectual-property">9. Intellectual property</a></li>
+    <li><a href="#third-party-services">10. Third-party services &amp; links</a></li>
+    <li><a href="#disclaimers">11. Disclaimers</a></li>
+    <li><a href="#limitation-of-liability">12. Limitation of liability</a></li>
+    <li><a href="#indemnification">13. Indemnification</a></li>
+    <li><a href="#termination">14. Termination</a></li>
+    <li><a href="#changes">15. Changes to Evidio or these terms</a></li>
+    <li><a href="#governing-law">16. Governing law</a></li>
+    <li><a href="#apple-terms">17. Apple-required terms</a></li>
+    <li><a href="#contact">18. Contact</a></li>
+  </ul>
+</nav>
+
+<section class="block" id="agreement">
+  <h2>1. Agreement to these terms</h2>
+  <p>These Terms of Use (the &ldquo;Terms&rdquo;) form a binding legal agreement between you (&ldquo;you&rdquo; or &ldquo;your&rdquo;) and <strong>Lara Emily Hopf</strong> (&ldquo;Evidio&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) governing your access to and use of <strong>Evidio</strong>, including the Evidio iOS app, the Evidio website, and all related features, content, and updates (collectively, the &ldquo;service&rdquo;). These Terms also serve as the End User License Agreement (EULA) for the app.</p>
+  <p>By creating an account, signing in, or using the service, you confirm that you have read, understood, and agree to be bound by these Terms and by our <a href="evidio-privacy.html">Privacy Policy</a>, which is incorporated by reference. If you do not agree, do not use Evidio.</p>
+</section>
+
+<section class="block" id="eligibility">
+  <h2>2. Eligibility</h2>
+  <p>Evidio is not directed to children under 16, and you must be at least 16 years old (or the higher minimum age required in your country) to use it. By using the service, you represent that you meet the minimum age in your jurisdiction and are old enough to form a binding contract.</p>
+  <p>You also represent that you are not barred from using the service under any applicable law, and that you will use it only for lawful purposes.</p>
+</section>
+
+<section class="block" id="your-account">
+  <h2>3. Your account</h2>
+  <p>You create an account using your email address and a password. You are responsible for maintaining the confidentiality of your credentials and for all activity that occurs under your account. You agree to provide accurate information, not to impersonate any person, and not to use another person&rsquo;s credentials without permission.</p>
+  <p>Evidio has three roles &mdash; viewers, creators, and expert reviewers. Becoming a verified creator or expert requires submitting credentials (such as a published-paper DOI, a university email, or proof of study) for review. You represent that any credentials you submit are genuine and belong to you. You can delete your account and associated data at any time from your Account tab in the app, or by contacting us.</p>
+</section>
+
+<section class="block" id="license">
+  <h2>4. Licence to use Evidio</h2>
+  <p>Subject to your compliance with these Terms, we grant you a limited, personal, non-exclusive, non-transferable, non-sublicensable, and revocable licence to use Evidio for your own personal, non-commercial purposes, on an Apple-branded device that you own or control as permitted by the <strong>Usage Rules</strong> in the Apple Media Services Terms and Conditions.</p>
+  <p>This is a licence, not a sale. We and our licensors retain all right, title, and interest in and to the service, and all rights not expressly granted are reserved. You may not resell or redistribute the service, and you may use it only as permitted by these Terms, Apple&rsquo;s Usage Rules, and applicable law.</p>
+</section>
+
+<section class="block" id="acceptable-use">
+  <h2>5. Acceptable use &amp; zero tolerance</h2>
+  <p><strong>Evidio does not tolerate objectionable content or abusive behavior.</strong> Content reported to us is reviewed within 24 hours, and users who post objectionable content or behave abusively will be removed. This is a condition of using the service.</p>
+  <p>You agree not to post, upload, or share content, or otherwise use the service, in any way that:</p>
+  <ul class="clean">
+    <li>is unlawful, harmful, threatening, harassing, hateful, defamatory, or that incites violence;</li>
+    <li>is sexually explicit, obscene, or otherwise objectionable;</li>
+    <li>bullies, abuses, impersonates, or invades the privacy of any person;</li>
+    <li>is fraudulent, deliberately misleading, or presents fabricated data or falsified sources as genuine;</li>
+    <li>infringes any intellectual-property, privacy, or other right of any third party;</li>
+    <li>contains malware, or attempts to breach, disrupt, scrape, or reverse-engineer the service or its security;</li>
+    <li>is spam, or artificially manipulates votes, reviews, or the reviewer-assignment process.</li>
+  </ul>
+  <p>Evidio provides tools to <strong>report</strong> content and to <strong>block</strong> other users. We may remove content, and suspend or terminate accounts, that violate these Terms, with or without notice. We are not obligated to publish, host, or retain any content.</p>
+</section>
+
+<section class="block" id="your-content">
+  <h2>6. Your content &amp; submissions</h2>
+  <p>You retain ownership of the content you submit to Evidio (your posts, text, images, videos, sources, and comments &mdash; &ldquo;your content&rdquo;). By submitting content, you grant us a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, display, distribute, and adapt your content <strong>solely to operate and provide the service</strong> (including displaying approved posts in the feed on both the app and the website). This licence ends when you delete your content or your account, except for copies retained as required by law or already shared with others.</p>
+  <p>You represent and warrant that you own or have the necessary rights to your content and its cited sources, that your content is accurate and not misleading, and that it does not violate Section 5 or any third-party rights. Submissions enter a review process; <strong>we do not guarantee that any submission will be published</strong>, and we may reject, remove, or take down content at our discretion, including after a report.</p>
+</section>
+
+<section class="block" id="review">
+  <h2>7. Automated AI check, expert review &amp; no professional advice</h2>
+  <p>When you submit content, an <strong>automated AI check</strong> performs an initial fact-check and provides expert reviewers with a preliminary rating and notes. This assessment is <strong>advisory only</strong>: it is generated automatically, may be inaccurate or incomplete, and does not determine the outcome. Every post still requires human expert approval before it is published, and you should not rely on the AI rating as a statement of accuracy. To provide this check, the content of your submission is processed by a third-party AI provider acting as our processor, as described in our <a href="evidio-privacy.html">Privacy Policy</a>.</p>
+  <p>Evidio invites credential-verified expert reviewers to review submissions before they are published. Review is performed by independent users, not by Evidio, and <strong>approval does not constitute an endorsement, guarantee, or certification of scientific accuracy</strong> by Evidio.</p>
+  <p>All content on Evidio is user-generated and is provided for general informational purposes only. It is <strong>not professional advice</strong> of any kind, including medical, health, scientific, legal, or financial advice. Do not rely on it as a substitute for advice from a qualified professional, and always evaluate cited sources for yourself.</p>
+</section>
+
+<section class="block" id="advertising">
+  <h2>8. No advertising</h2>
+  <p>Evidio does not show ads, contains no advertising SDK, does not collect an advertising identifier, and performs no cross-app or cross-site tracking. Your information is never sold or shared for advertising purposes.</p>
+</section>
+
+<section class="block" id="intellectual-property">
+  <h2>9. Intellectual property</h2>
+  <p>Evidio, including its name, logo, design, software, and content we create, is owned by Lara Emily Hopf and protected by intellectual-property laws. Except for the licence to use the service granted above, these Terms do not transfer any of our intellectual-property rights to you. Your content remains yours, subject to the licence in Section 6, and cited works (including papers referenced by DOI) belong to their respective rights holders.</p>
+</section>
+
+<section class="block" id="third-party-services">
+  <h2>10. Third-party services &amp; links</h2>
+  <p>Evidio relies on service providers to deliver its features. These services are governed by their own terms and privacy policies, and we are not responsible for them:</p>
+  <ul class="clean">
+    <li><strong>Supabase</strong> &mdash; database, authentication, and file storage.</li>
+    <li><strong>Mux</strong> &mdash; hosting, encoding, and streaming of post videos.</li>
+    <li><strong>Resend</strong> &mdash; delivery of transactional email.</li>
+    <li><strong>PostHog</strong> &mdash; privacy-preserving product analytics.</li>
+    <li><strong>A third-party AI provider</strong> &mdash; performs an automated initial fact-check on new submissions to assist expert reviewers.</li>
+    <li><strong>Apple</strong> &mdash; the App Store and related iOS services.</li>
+  </ul>
+  <p>The service may reference external websites or resources (such as papers linked by DOI) that we do not control. We are not responsible for their content or practices, and your use of any third-party service is at your own risk and subject to that party&rsquo;s terms. Full details of how data is processed are in our <a href="evidio-privacy.html">Privacy Policy</a>.</p>
+</section>
+
+<section class="block" id="disclaimers">
+  <h2>11. Disclaimers (&ldquo;as is&rdquo;)</h2>
+  <p>To the fullest extent permitted by law, the service is provided <strong>&ldquo;as is&rdquo; and &ldquo;as available&rdquo;</strong>, with all faults and without warranties of any kind, whether express, implied, or statutory. We disclaim all implied warranties, including merchantability, fitness for a particular purpose, title, accuracy, and non-infringement.</p>
+  <p>We do not warrant that the service will be uninterrupted, timely, secure, or error-free; that content is accurate or reliable; or that your data will never be lost or corrupted. Some jurisdictions do not allow the exclusion of certain warranties, so some of the above may not apply to you.</p>
+</section>
+
+<section class="block" id="limitation-of-liability">
+  <h2>12. Limitation of liability</h2>
+  <p>To the fullest extent permitted by law, in no event will Evidio (Lara Emily Hopf), or our licensors or suppliers, be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, data, goodwill, or other intangible losses, arising out of or relating to your use of (or inability to use) the service, even if we have been advised of the possibility of such damages.</p>
+  <p>To the fullest extent permitted by law, our total aggregate liability for all claims relating to the service will not exceed the greater of (a) the total amount you paid us for the service in the twelve (12) months before the event giving rise to the claim, or (b) USD&nbsp;$10.00. Nothing in these Terms limits any liability that cannot be limited under applicable law.</p>
+</section>
+
+<section class="block" id="indemnification">
+  <h2>13. Indemnification</h2>
+  <p>To the extent permitted by applicable law, you agree to indemnify, defend, and hold harmless Evidio (Lara Emily Hopf) and our licensors and suppliers from and against any claims, demands, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or relating to your content, your use or misuse of the service, your violation of these Terms, or your violation of any law or of the rights of any third party.</p>
+</section>
+
+<section class="block" id="termination">
+  <h2>14. Termination</h2>
+  <p>These Terms remain in effect for as long as you use the service. You may stop using Evidio at any time and delete your account and data from your Account tab in the app.</p>
+  <p>We may suspend or terminate your licence and access, with or without notice, if you breach these Terms or applicable law, and may modify or discontinue the service in whole or in part. Sections that by their nature should survive termination (including those on intellectual property, disclaimers, limitation of liability, indemnification, and governing law) will continue to apply.</p>
+</section>
+
+<section class="block" id="changes">
+  <h2>15. Changes to Evidio or these terms</h2>
+  <p>We may add, change, or remove features, or discontinue the service, at any time. We may also update these Terms from time to time. When we do, we will revise the &ldquo;Effective date&rdquo; above and post the updated Terms; for material changes we will provide reasonable notice where required by law. Your continued use of the service after updated Terms take effect constitutes acceptance; if you do not agree, stop using the service.</p>
+</section>
+
+<section class="block" id="governing-law">
+  <h2>16. Governing law</h2>
+  <p>These Terms, and any dispute arising out of or relating to them or to the service, are governed by the laws of <strong>Ontario, Canada</strong>, without regard to its conflict-of-laws principles. Subject to any mandatory consumer-protection rights you have in your country of residence, you agree to the exclusive jurisdiction of the courts located in <strong>Ontario, Canada</strong>.</p>
+  <p class="muted">Nothing in these Terms removes or limits any non-waivable statutory rights you may have as a consumer.</p>
+</section>
+
+<section class="block" id="apple-terms">
+  <h2>17. Apple-required terms</h2>
+  <p>The following terms apply because the Evidio app is distributed through the Apple App Store. To the extent of any conflict between this section and the rest of these Terms with respect to your use of the app obtained from the App Store, this section controls.</p>
+  <ul class="clean">
+    <li><strong>This agreement is between you and Evidio (Lara Emily Hopf) only</strong>, and not with Apple. Apple is not responsible for the app or its content.</li>
+    <li><strong>Scope of licence.</strong> The licence granted to you is limited to a non-transferable licence to use the app on any Apple-branded products that you own or control, as permitted by the Usage Rules in the Apple Media Services Terms and Conditions.</li>
+    <li><strong>Maintenance and support.</strong> Evidio, not Apple, is solely responsible for providing any maintenance and support for the app; Apple has no obligation to furnish any maintenance or support services.</li>
+    <li><strong>Warranty.</strong> Evidio is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. If the app fails to conform to any applicable warranty, you may notify Apple, and Apple may refund the purchase price (if any) you paid for the app; to the maximum extent permitted by law, Apple has no other warranty obligation whatsoever with respect to the app.</li>
+    <li><strong>Product claims.</strong> Evidio, not Apple, is responsible for addressing any claims by you or a third party relating to the app or your use of it, including product-liability claims, claims that the app fails to conform to any legal or regulatory requirement, and claims arising under consumer-protection or similar laws.</li>
+    <li><strong>Intellectual-property claims.</strong> In the event of a third-party claim that the app or your use of it infringes that party&rsquo;s intellectual-property rights, Evidio, not Apple, is solely responsible for the investigation, defence, settlement, and discharge of any such claim.</li>
+    <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo or designated as a &ldquo;terrorist-supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
+    <li><strong>Third-party beneficiary.</strong> Apple and Apple&rsquo;s subsidiaries are third-party beneficiaries of these Terms, and upon your acceptance Apple will have the right (and is deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary.</li>
+    <li><strong>Contact.</strong> Any questions, complaints, or claims regarding the app should be directed to Evidio at <a href="mailto:getevidio@gmail.com">getevidio@gmail.com</a>.</li>
+  </ul>
+</section>
+
+<section class="block" id="contact">
+  <h2>18. Contact</h2>
+  <p>If you have questions about these Terms or about Evidio, please contact us:</p>
+  <div class="card">
+    <p><strong>Evidio</strong><br>
+    Provided by Lara Emily Hopf<br>
+    80 John Street, M5V 3X4, Toronto, ON, Canada<br>
+    Bundle ID: <code>com.evidio.app</code></p>
+    <p>Email: <a href="mailto:getevidio@gmail.com">getevidio@gmail.com</a></p>
+    <p><a class="btn" href="mailto:getevidio@gmail.com">Email us</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <p class="foot-brand"><span aria-hidden="true">🧪</span> Evidio</p>
+    <p>Made by Lara Emily Hopf &middot; <a href="mailto:getevidio@gmail.com">getevidio@gmail.com</a></p>
+    <p class="muted">Last updated: 17 July 2026</p>
+    <p class="note">This document is provided for transparency and does not constitute legal advice.</p>
+    <p><a class="to-top" href="#top">Back to top &uarr;</a></p>
+  </div>
+</footer>
+</body>
+</html>

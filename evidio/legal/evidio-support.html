@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support for Evidio</title>
+<meta name="description" content="Get help with Evidio: accounts and roles, getting verified as a creator or expert, submitting cited posts, how AI and expert review work, reporting and blocking, and managing or deleting your data.">
+<style>
+:root{
+  --sage:#003646; --sage-ink:#003646; --slate:#6ba8be; --gold:#89bd98;
+  --success:#00463e; --amber:#C9832B; --danger:#b91c1c;
+  --bg:#fbfaf7; --surface:#FFFFFF; --surface-2:#e6eef1; --ink:#2a4a56; --ink-2:#5e8898;
+  --accent:var(--sage); --accent-ink:var(--sage-ink);
+  --line:rgba(0,54,70,.12); --line-soft:rgba(0,54,70,.07);
+  --glass:rgba(255,255,255,.66); --glass-strong:rgba(255,255,255,.82);
+  --tint:rgba(0,54,70,.08); --tint-2:rgba(107,168,190,.12); --gold-tint:rgba(137,189,152,.18);
+  --zebra:rgba(0,54,70,.04); --ring:rgba(0,54,70,.42);
+  --shadow-sm:0 1px 2px rgba(28,27,23,.05), 0 1px 3px rgba(28,27,23,.06);
+  --shadow:0 6px 22px rgba(28,27,23,.08), 0 2px 6px rgba(28,27,23,.05);
+  --shadow-lg:0 18px 48px rgba(28,27,23,.12), 0 6px 16px rgba(28,27,23,.07);
+  --r-sm:10px; --r:16px; --r-lg:20px; --maxw:760px; --pad:clamp(16px,4vw,28px);
+  --font:ui-rounded,-apple-system,BlinkMacSystemFont,"SF Pro Rounded","SF Pro",system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --display:var(--font); --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:24px; }
+body{
+  margin:0; min-height:100vh; min-height:100dvh; font-family:var(--font); font-size:17px; line-height:1.65;
+  color:var(--ink); background-color:var(--bg);
+  background-image:
+    radial-gradient(120% 80% at 50% -20%, rgba(0,54,70,.08), transparent 55%),
+    radial-gradient(90% 70% at 100% -8%, rgba(107,168,190,.16), transparent 55%),
+    radial-gradient(85% 60% at 0% 0%, rgba(0,70,62,.08), transparent 50%);
+  background-attachment:fixed; background-repeat:no-repeat; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img,svg{ vertical-align:middle; } img{ max-width:100%; height:auto; }
+a{ color:var(--accent-ink); text-decoration:none; }
+a:hover{ text-decoration:underline; text-underline-offset:2px; }
+:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; border-radius:6px; }
+::selection{ background:var(--tint); color:var(--ink); }
+.container{ width:100%; max-width:var(--maxw); margin-inline:auto; padding:clamp(24px,5vw,44px) var(--pad) 64px; }
+.corner-nav{ position:fixed; top:12px; left:12px; z-index:60; display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.corner-btn{ display:inline-flex; align-items:center; gap:.35em; padding:.4em .85em; border-radius:999px; background:var(--surface); color:var(--accent-ink); border:1px solid var(--line); box-shadow:var(--shadow-sm); font-size:.95rem; font-weight:700; line-height:1; text-decoration:none; white-space:nowrap; }
+.corner-btn:hover{ background:var(--tint); text-decoration:none; }
+@media (max-width:560px){ .corner-btn{ font-size:.85rem; padding:.35em .7em; } }
+.site-header{ padding:clamp(20px,4vw,32px) var(--pad) 14px; }
+.brand{ display:flex; align-items:center; gap:14px; max-width:var(--maxw); margin-inline:auto; color:var(--ink); width:fit-content; }
+.brand-mark{ display:grid; place-items:center; width:52px; height:52px; flex:none; border-radius:16px; font-size:26px; background:var(--glass-strong); border:1px solid var(--line-soft); box-shadow:var(--shadow-sm); -webkit-backdrop-filter:blur(8px) saturate(1.1); backdrop-filter:blur(8px) saturate(1.1); }
+.brand-text{ display:flex; flex-direction:column; line-height:1.12; }
+.brand-name{ font-family:var(--display); font-size:1.9rem; font-weight:800; letter-spacing:-.02em; color:var(--accent-ink); }
+.brand-kicker{ margin-top:1px; font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); }
+h1{ font-family:var(--display); font-size:clamp(2.1rem,5vw,3rem); line-height:1.05; font-weight:800; letter-spacing:-.02em; margin:0 0 .3em; color:var(--accent-ink); }
+.lead{ font-size:1.18rem; line-height:1.6; color:var(--ink-2); margin:0 0 1.5em; max-width:64ch; }
+h2{ font-size:clamp(1.35rem,3vw,1.6rem); line-height:1.22; font-weight:700; letter-spacing:-.01em; margin:0 0 .55em; color:var(--accent-ink); }
+h3{ font-size:1.12rem; font-weight:700; margin:1.6em 0 .4em; color:var(--ink); }
+p{ margin:0 0 1.05em; } strong,b{ font-weight:700; color:var(--ink); }
+section.block{ margin-top:42px; scroll-margin-top:24px; }
+section.block > h2{ position:relative; padding-left:16px; }
+section.block > h2::before{ content:""; position:absolute; left:0; top:.16em; bottom:.16em; width:5px; border-radius:999px; background:linear-gradient(180deg, var(--sage), var(--slate)); }
+.toc{ margin:0 0 8px; padding:18px 20px; background:var(--glass-strong); border:1px solid var(--line-soft); border-radius:var(--r-lg); box-shadow:var(--shadow-sm); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+.toc > :first-child{ margin-top:0; }
+.toc p{ margin:0 0 .5rem; font-size:.76rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2); }
+.toc ul{ list-style:none; margin:0; padding:0; } .toc li{ margin:.3rem 0; break-inside:avoid; } .toc a{ color:var(--accent-ink); font-weight:600; }
+@media (min-width:560px){ .toc ul{ columns:2; column-gap:28px; } }
+.card{ margin:1.2em 0; padding:clamp(18px,3.5vw,26px); background:var(--glass-strong); border:1px solid var(--line-soft); border-radius:var(--r-lg); box-shadow:var(--shadow); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1); }
+.card > :first-child{ margin-top:0; } .card > :last-child{ margin-bottom:0; }
+.pill{ display:inline-flex; align-items:center; gap:.4em; padding:.28em .72em; border-radius:999px; font-size:.78rem; font-weight:700; line-height:1; letter-spacing:.02em; color:var(--accent-ink); background:var(--tint); border:1px solid rgba(0,54,70,.20); vertical-align:middle; white-space:nowrap; }
+.note{ margin:1em 0; padding:.7em .95em .7em 1em; font-size:.92rem; color:var(--ink-2); background:var(--gold-tint); border-left:3px solid var(--gold); border-radius:0 var(--r-sm) var(--r-sm) 0; }
+.muted{ color:var(--ink-2); font-size:.94em; }
+ul,ol{ padding-left:1.3em; margin:1em 0; } li{ margin:.4em 0; } li::marker{ color:var(--accent); }
+ul.clean{ list-style:none; margin:1em 0; padding:0; }
+ul.clean > li{ position:relative; padding-left:1.6em; margin:.5em 0; }
+ul.clean > li::before{ content:""; position:absolute; left:.2em; top:.62em; width:.5em; height:.5em; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px var(--tint); }
+table.data{ width:100%; margin:1.3em 0; border-collapse:separate; border-spacing:0; border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:var(--surface); box-shadow:var(--shadow-sm); font-size:.96rem; }
+table.data th, table.data td{ text-align:left; vertical-align:top; padding:11px 14px; border-bottom:1px solid var(--line-soft); }
+table.data thead th{ background:var(--tint); color:var(--ink); font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; border-bottom:1px solid var(--line); }
+table.data tbody tr:nth-child(even) td{ background:var(--zebra); } table.data tbody tr:last-child td{ border-bottom:0; }
+@media (max-width:600px){ table.data{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--r-sm); } table.data th, table.data td{ min-width:8.5rem; } }
+/* FAQ accordions */
+details.faq{ margin:.7em 0; border:1px solid var(--line-soft); border-radius:var(--r); background:var(--glass-strong); box-shadow:var(--shadow-sm); overflow:hidden; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+details.faq > summary{ display:flex; align-items:center; gap:14px; padding:15px 18px; font-weight:700; color:var(--ink); list-style:none; cursor:pointer; user-select:none; }
+details.faq > summary::-webkit-details-marker{ display:none; }
+details.faq > summary::marker{ content:""; }
+details.faq > summary:hover{ background:var(--tint); }
+details.faq > summary:focus-visible{ outline-offset:-3px; }
+details.faq > summary::after{ content:""; flex:none; margin-left:auto; width:.6em; height:.6em; border-right:2.5px solid var(--accent); border-bottom:2.5px solid var(--accent); transform:rotate(45deg); transition:transform .25s ease; }
+details.faq[open] > summary::after{ transform:rotate(-135deg); }
+details.faq[open] > summary{ border-bottom:1px solid var(--line-soft); }
+details.faq > *:not(summary){ padding-inline:18px; }
+details.faq > *:not(summary):first-of-type{ padding-top:14px; }
+details.faq > *:not(summary):last-child{ padding-bottom:16px; margin-bottom:0; }
+details.faq p:last-child{ margin-bottom:0; }
+a.btn,.btn{ display:inline-flex; align-items:center; gap:.55em; padding:.8em 1.3em; border-radius:999px; background:var(--accent); color:#fff; font:inherit; font-weight:700; font-size:1rem; line-height:1; border:1px solid transparent; cursor:pointer; box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.18); transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+a.btn:hover,.btn:hover{ background:#00252f; text-decoration:none; transform:translateY(-1px); box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.2); }
+a.btn:active,.btn:active{ transform:translateY(0); }
+code{ font-family:var(--mono); font-size:.9em; padding:.12em .45em; border-radius:6px; background:var(--surface-2); color:var(--ink); border:1px solid var(--line-soft); }
+.site-footer{ margin-top:48px; border-top:1px solid var(--line); background:var(--glass); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+.foot-inner{ max-width:var(--maxw); margin-inline:auto; padding:30px var(--pad) 42px; color:var(--ink-2); font-size:.95rem; }
+.foot-inner p{ margin:.4em 0; }
+.foot-brand{ display:flex; align-items:center; gap:9px; margin:0 0 .7em; font-weight:800; color:var(--accent-ink); }
+.foot-inner a{ color:var(--accent-ink); font-weight:600; } .foot-inner .note{ max-width:60ch; }
+.to-top{ display:inline-block; margin-top:1em; font-weight:700; }
+@media (max-width:560px){ body{ font-size:16px; } .brand-mark{ width:46px; height:46px; font-size:22px; } .brand-name{ font-size:1.65rem; } }
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; } }
+@media (prefers-color-scheme:dark){
+  :root{
+    --sage:#5fb0c6; --sage-ink:#8fd0e0; --slate:#6ba8be; --gold:#89bd98;
+    --bg:#0c1e24; --surface:#12262d; --surface-2:#183038; --ink:#e7f1f4; --ink-2:#9db9c3;
+    --line:rgba(231,241,244,.16); --line-soft:rgba(231,241,244,.09);
+    --glass:rgba(18,38,45,.62); --glass-strong:rgba(18,38,45,.80);
+    --tint:rgba(95,176,198,.15); --tint-2:rgba(107,168,190,.15); --gold-tint:rgba(137,189,152,.14);
+    --zebra:rgba(95,176,198,.07); --ring:rgba(95,176,198,.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.40); --shadow:0 6px 22px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.35); --shadow-lg:0 18px 48px rgba(0,0,0,.55);
+  }
+  body{ background-image:
+    radial-gradient(120% 80% at 50% -20%, rgba(95,176,198,.10), transparent 55%),
+    radial-gradient(90% 70% at 100% -8%, rgba(107,168,190,.14), transparent 55%),
+    radial-gradient(85% 60% at 0% 0%, rgba(137,189,152,.10), transparent 50%); }
+  a.btn,.btn{ color:#0c1e24; } a.btn:hover,.btn:hover{ background:#8fd0e0; }
+}
+</style>
+</head>
+<body id="top">
+<nav class="corner-nav" aria-label="Return links">
+  <a class="corner-btn" href="https://getevidio.com">&larr; go back to Evidio</a>
+</nav>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🧪</span>
+    <span class="brand-text">
+      <span class="brand-name">Evidio</span>
+      <span class="brand-kicker">Support</span>
+    </span>
+  </div>
+</header>
+
+<main class="container">
+<h1>Support for Evidio</h1>
+<p class="lead">Need a hand with Evidio? Find quick answers below, follow a step-by-step fix, or email us. We&rsquo;re happy to help.</p>
+
+<section class="block" id="contact">
+  <h2>Contact us</h2>
+  <p>Questions, bugs, or feedback? You can reach us directly by email. We read every message and are glad to help.</p>
+  <div class="card">
+    <p><strong>Email support</strong></p>
+    <p>Tell us what&rsquo;s happening and we&rsquo;ll get back to you as soon as we can.</p>
+    <p><a class="btn" href="mailto:getevidio@gmail.com?subject=Evidio%20Support">Email Support</a></p>
+    <p class="note">We aim to reply within 1&ndash;2 business days, often sooner. To report objectionable content or an abusive user, use the <strong>&hellip;</strong> menu on any post (or long-press a comment) inside the app &mdash; reports are reviewed within 24 hours.</p>
+  </div>
+  <p class="muted">Tip: the FAQ and guides below answer the most common questions in seconds.</p>
+</section>
+
+<nav class="toc" aria-label="On this page">
+  <p>On this page</p>
+  <ul>
+    <li><a href="#contact">Contact us</a></li>
+    <li><a href="#faq">Frequently asked questions</a></li>
+    <li><a href="#accounts">Accounts &amp; roles</a></li>
+    <li><a href="#verification">Getting verified</a></li>
+    <li><a href="#submitting">Submitting a post</a></li>
+    <li><a href="#review">How review works</a></li>
+    <li><a href="#safety">Reporting &amp; blocking</a></li>
+    <li><a href="#your-data">Managing your data</a></li>
+    <li><a href="#before-you-contact">Before you contact us</a></li>
+  </ul>
+</nav>
+
+<section class="block" id="faq">
+  <h2>Frequently asked questions</h2>
+
+  <details class="faq"><summary>What are the roles on Evidio?</summary><p>There are three: <strong>viewers</strong> browse, comment, and vote on approved content; <strong>creators</strong> can also submit posts with cited sources; and <strong>expert reviewers</strong> can also review submissions in their field. Creators and experts verify their credentials; viewers do not have to.</p></details>
+
+  <details class="faq"><summary>How do I become a verified creator or expert?</summary><p>Pick the creator or expert role at sign-up (or add it later), then verify with one of: a published-paper <strong>DOI</strong>, a <strong>university email</strong>, or a <strong>proof-of-study PDF</strong>. Submit it from the verification screen. We review credentials within about 24 hours; meanwhile you can use the app as a viewer, and your creator/reviewer features unlock automatically once you&rsquo;re approved.</p></details>
+
+  <details class="faq"><summary>I can&rsquo;t see the Upload or Review tab.</summary><p>Those tabs require a <strong>verified</strong> creator or expert account. Until your credentials are approved you have viewer permissions, so the tabs stay hidden. Once verified, they appear the next time your profile loads.</p></details>
+
+  <details class="faq"><summary>Why hasn&rsquo;t my post been published yet?</summary><p>Every post is checked before it goes live. First an automated AI fact-check gives reviewers an initial rating; then field-matched, credential-verified experts are invited, and the first three to accept review it. A post is published once it reaches <strong>3 approvals</strong>, or rejected at <strong>2 rejections</strong>. If there aren&rsquo;t yet enough matching experts in its field, it waits in the queue rather than publishing.</p></details>
+
+  <details class="faq"><summary>How do I add sources to a post?</summary><p>In the submit screen, add one or more sources, each with a title, a DOI link, and the claim it supports. A DOI looks like <code>https://doi.org/10.1000/xyz</code> (or <code>10.1000/xyz</code>). Well-cited posts are far more likely to be approved.</p></details>
+
+  <details class="faq"><summary>My video upload is slow or stuck.</summary><p>Uploading starts as soon as you pick a video, and a progress bar shows how far along it is &mdash; you can keep filling in the details meanwhile. Make sure you have a stable connection and keep the app open until it reaches 100%. If it fails, tap &ldquo;Change video&rdquo; and pick it again.</p></details>
+
+  <details class="faq"><summary>How do I report content or block someone?</summary><p>Open the <strong>&hellip;</strong> menu on any post (it&rsquo;s on the feed card and the post screen), or long-press a comment, and choose <strong>Report</strong> or <strong>Block</strong>. Reports are reviewed within 24 hours. Blocking hides that person&rsquo;s posts and comments from you everywhere; you can unblock from your Account tab.</p></details>
+
+  <details class="faq"><summary>How do I delete my account?</summary><p>Go to the <strong>Account</strong> tab and tap <strong>Delete account</strong>. This permanently deletes your account and your data (posts, comments, and votes) and cannot be undone.</p></details>
+
+  <details class="faq"><summary>How do I reset my password?</summary><p>On the login screen, tap the password-reset link and enter your email. We&rsquo;ll send a secure link to set a new password.</p></details>
+
+  <details class="faq"><summary>Comments aren&rsquo;t loading or posting.</summary><p>Make sure you&rsquo;re on the latest version of the app and have a working connection, then reopen the post. If a message appears when you try to comment, it will describe the problem &mdash; send it to us and we&rsquo;ll help.</p></details>
+
+  <details class="faq"><summary>Does Evidio show ads or track me?</summary><p>No. Evidio shows no ads, contains no advertising SDK, and does no cross-app tracking. We use privacy-preserving product analytics tied only to your account identifier &mdash; see the <a href="evidio-privacy.html">Privacy Policy</a>.</p></details>
+</section>
+
+<section class="block" id="accounts">
+  <h2>Accounts &amp; roles</h2>
+  <p>You sign in with your email and password. At sign-up you choose how you want to take part:</p>
+  <ul class="clean">
+    <li><strong>Viewer</strong> &mdash; comment on and follow verified content on the feed. No credential verification needed.</li>
+    <li><strong>Creator</strong> &mdash; everything a viewer can do, plus submit posts (text, image, or video) with cited sources.</li>
+    <li><strong>Expert reviewer</strong> &mdash; everything above, plus review submissions in your field of expertise.</li>
+  </ul>
+  <p>You can hold more than one role. Creators and experts need a field of expertise on their profile so submissions can be matched to the right reviewers.</p>
+</section>
+
+<section class="block" id="verification">
+  <h2>Getting verified</h2>
+  <p>Creator and expert features unlock once your academic credentials are verified. From the verification screen, choose a method and submit it:</p>
+  <ul class="clean">
+    <li><strong>Published paper (DOI)</strong> &mdash; paste a <code>doi.org</code> link to a paper you authored.</li>
+    <li><strong>University email</strong> &mdash; verify with your institutional email address.</li>
+    <li><strong>Proof of study (PDF)</strong> &mdash; upload an enrolment letter or transcript.</li>
+  </ul>
+  <p>After you submit, you&rsquo;ll see a confirmation and can continue into the app as a viewer. We review credentials within about 24 hours; you don&rsquo;t have to do anything &mdash; your reviewer or creator rights are granted automatically once we verify them. Verification documents are kept private and are visible only to the Evidio admin.</p>
+</section>
+
+<section class="block" id="submitting">
+  <h2>Submitting a post</h2>
+  <p>Creators submit from the <strong>Upload</strong> tab. Choose a content type &mdash; text, image, or video &mdash; add a title and (for text) your content, pick a topic, and add your sources.</p>
+  <ul class="clean">
+    <li><strong>Sources</strong> are what set Evidio apart: add each as a title, a DOI link, and the claim it supports.</li>
+    <li><strong>Images</strong>: attach up to 10 from your photo library.</li>
+    <li><strong>Video</strong>: uploading begins the moment you pick the file, with a progress bar; submit finishes the last bit.</li>
+  </ul>
+  <p>When you submit, your post enters review with the status &ldquo;pending&rdquo;. You&rsquo;ll be notified when it&rsquo;s decided, and you can see your submissions and their status on your Account tab.</p>
+</section>
+
+<section class="block" id="review">
+  <h2>How review works</h2>
+  <p>Evidio publishes nothing until it has been checked. The pipeline is:</p>
+  <ul class="clean">
+    <li><strong>Automated AI fact-check</strong> &mdash; a new submission is checked automatically, giving reviewers an initial rating and notes. This assists reviewers; it never publishes anything on its own.</li>
+    <li><strong>Expert invitations</strong> &mdash; credential-verified experts in the post&rsquo;s field (or an adjacent field) are invited; the first three to accept become its reviewers. Creators can never review their own post.</li>
+    <li><strong>Decision</strong> &mdash; <strong>3 approvals</strong> publish the post to the feed; <strong>2 rejections</strong> reject it, with reviewer feedback to the creator.</li>
+  </ul>
+  <p>Approval means three experts found the post sound enough to publish &mdash; it is not a guarantee of scientific accuracy, and content on Evidio is not professional advice. Always evaluate the cited sources yourself.</p>
+</section>
+
+<section class="block" id="safety">
+  <h2>Reporting &amp; blocking</h2>
+  <p>Evidio does not tolerate objectionable content or abusive behavior. You have two tools, on every post:</p>
+  <ul class="clean">
+    <li><strong>Report</strong> &mdash; open the <strong>&hellip;</strong> menu on a post (or long-press a comment), choose Report, and pick a reason. Reports are reviewed within 24 hours, and content or users that break the rules are removed.</li>
+    <li><strong>Block</strong> &mdash; from the same menu, block a user to hide their posts and comments from you everywhere they appear. Manage or undo blocks from your Account tab.</li>
+  </ul>
+</section>
+
+<section class="block" id="your-data">
+  <h2>Managing your data</h2>
+  <p>You stay in control of your information:</p>
+  <ul class="clean">
+    <li><strong>Edit your profile</strong> &mdash; update your name, bio, and field from the Account tab.</li>
+    <li><strong>Delete your account</strong> &mdash; Account tab &rarr; <strong>Delete account</strong>. This permanently removes your account and data (posts, comments, votes) and cannot be undone.</li>
+    <li><strong>Privacy</strong> &mdash; what we collect and who processes it is described in the <a href="evidio-privacy.html">Privacy Policy</a>; your rights and our terms are in the <a href="evidio-terms.html">Terms of Use</a>.</li>
+  </ul>
+</section>
+
+<section class="block" id="before-you-contact">
+  <h2>Before you contact us</h2>
+  <p>To help us help you faster, please include:</p>
+  <ul class="clean">
+    <li>your device model and iOS version (e.g. iPhone 15, iOS 18);</li>
+    <li>what you were trying to do, and what happened instead;</li>
+    <li>the exact text of any error message you saw;</li>
+    <li>a screenshot if you can.</li>
+  </ul>
+  <p><a class="btn" href="mailto:getevidio@gmail.com?subject=Evidio%20Support">Email Support</a></p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <p class="foot-brand"><span aria-hidden="true">🧪</span> Evidio</p>
+    <p>Made by Lara Emily Hopf &middot; <a href="mailto:getevidio@gmail.com">getevidio@gmail.com</a></p>
+    <p><a href="evidio-privacy.html">Privacy Policy</a> &middot; <a href="evidio-terms.html">Terms of Use</a></p>
+    <p><a class="to-top" href="#top">Back to top &uarr;</a></p>
+  </div>
+</footer>
+</body>
+</html>
