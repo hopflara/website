@@ -3,17 +3,328 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>my social media</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+  <title>Lara Hopf — UGC Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Sacramento&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --pink:#d63384;
+      --pink-deep:#b02167;
+      --pink-soft:#f0b9d2;
+      --pink-tint:#fbeaf2;
+      --ink:#3a2a33;
+      --ink-2:#8a6f7d;
+      --bg:#fdfcfb;
+      --line:rgba(214,51,132,.18);
+      --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+      --script:"Sacramento", cursive;
+      --hand:"Caveat", cursive;
+      --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:var(--sans); font-size:16px; line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      background-image:
+        radial-gradient(120% 60% at 50% -10%, rgba(214,51,132,.08), transparent 55%),
+        radial-gradient(70% 50% at 100% 0%, rgba(240,185,210,.20), transparent 55%);
+      background-repeat:no-repeat;
+    }
+    .wrap{ max-width:1000px; margin:0 auto; padding:0 1.4rem 5rem; }
+
+    .back{
+      position:fixed; top:1rem; left:1rem; z-index:20;
+      font-family:var(--hand); font-size:1.35rem; font-weight:700; color:var(--pink);
+      background:#fff; border:1px solid var(--line); box-shadow:0 2px 8px rgba(214,51,132,.12);
+      padding:.1rem .8rem; border-radius:999px; text-decoration:none;
+    }
+    .back:hover{ background:var(--pink-tint); }
+
+    /* top keyword strip */
+    .strip{
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.6rem;
+      max-width:1000px; margin:0 auto; padding:1.4rem 1.4rem .2rem;
+      font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-2); font-weight:600;
+    }
+    .strip .keys{ display:flex; gap:1.2rem; flex-wrap:wrap; }
+    .strip .keys span{ display:inline-flex; align-items:center; gap:.5em; }
+    .strip .keys span::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--pink); }
+
+    /* hero */
+    .hero{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:2rem; align-items:center; padding:1.5rem 0 2.5rem; }
+    .arch{
+      position:relative; width:100%; aspect-ratio:3/4; max-width:360px;
+      border-radius:999px 999px 18px 18px; overflow:hidden;
+      background:var(--pink-tint); border:1px solid var(--line);
+      box-shadow:0 18px 48px rgba(214,51,132,.12);
+    }
+    .arch img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .ph{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.4rem;
+      color:var(--pink); text-align:center; padding:1rem; }
+    .ph .ico{ font-size:2rem; }
+    .ph code{ font-family:var(--mono, monospace); font-size:.72rem; color:var(--ink-2); background:#fff; padding:.15em .4em; border-radius:6px; border:1px solid var(--line); }
+    .slot{ opacity:0; }                    /* hidden until it loads */
+    .filled .slot{ opacity:1; }
+    .filled .ph{ display:none; }
+
+    .hero-name .eyebrow{ font-size:.75rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-2); font-weight:600; }
+    .hero-name .first{ font-family:var(--script); color:var(--pink); font-size:clamp(3.5rem,9vw,6rem); line-height:.8; margin:.3rem 0 -.2rem; }
+    .hero-name .last{ font-family:var(--serif); font-weight:900; color:var(--pink-soft); font-size:clamp(3rem,8vw,5.4rem); line-height:.9; letter-spacing:.01em; text-transform:uppercase; }
+    .hero-name .tag{ margin-top:.6rem; font-size:.9rem; letter-spacing:.28em; text-transform:uppercase; color:var(--ink); font-weight:600; }
+
+    /* section header with rule */
+    .sec{ margin-top:3.5rem; }
+    .sec-head{ display:flex; align-items:center; gap:1rem; margin-bottom:1.4rem; }
+    .sec-head h2{ font-family:var(--serif); font-weight:700; color:var(--pink); font-size:clamp(1.5rem,3.5vw,2rem); letter-spacing:.06em; text-transform:uppercase; margin:0; white-space:nowrap; }
+    .sec-head::after{ content:""; flex:1; height:1.5px; background:var(--line); }
+    .script-accent{ font-family:var(--hand); color:var(--pink); font-weight:700; }
+
+    /* about me */
+    .about{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;
+      background:#fff; border:1px solid var(--line); border-radius:24px; padding:2rem; box-shadow:0 10px 30px rgba(214,51,132,.06); position:relative; }
+    .about .kicker{ position:absolute; top:1.5rem; right:1.6rem; font-family:var(--hand); font-size:1.6rem; line-height:1; color:var(--pink); }
+    .about h3{ font-family:var(--serif); font-weight:700; color:var(--pink); font-size:clamp(1.6rem,4vw,2.2rem); text-transform:uppercase; margin:.2rem 0 1rem; }
+    .about p{ margin:0 0 1rem; }
+    .vslot{ position:relative; width:100%; aspect-ratio:4/5; border-radius:16px; overflow:hidden; background:var(--pink-tint); border:1px solid var(--line); }
+    .vslot video{ width:100%; height:100%; object-fit:cover; display:block; }
+    .vslot .ph{ color:var(--pink); }
+
+    /* videos grid */
+    .vids{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    .vcard .reel{ position:relative; width:100%; aspect-ratio:9/16; border-radius:14px; overflow:hidden; background:var(--pink-tint); border:1px solid var(--line); }
+    .vcard .reel video{ width:100%; height:100%; object-fit:cover; display:block; }
+    .vcard .label{ margin-top:.7rem; text-align:center; background:var(--pink-tint); color:var(--pink-deep); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.72rem; padding:.5rem; border-radius:8px; }
+    .vcard .cap{ margin-top:.5rem; text-align:center; font-size:.82rem; color:var(--ink-2); }
+    .vids-note{ text-align:right; }
+
+    /* services */
+    .svc-panel{ background:var(--pink-tint); border:1px solid var(--line); border-radius:24px; padding:2rem; }
+    .svc-panel .title{ text-align:center; font-family:var(--serif); font-style:italic; color:var(--pink); font-size:1.4rem; margin:0 0 1.4rem; }
+    .pillgrid{ display:grid; grid-template-columns:1fr 1fr; gap:.7rem 1.2rem; }
+    .pill{ background:#fff; border:1px solid var(--line); border-radius:999px; padding:.7rem 1.1rem; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); box-shadow:0 2px 6px rgba(214,51,132,.05); }
+
+    .includes{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:2rem; align-items:center; margin-top:2rem; }
+    .collage{ position:relative; min-height:320px; }
+    .collage .shot{ position:absolute; width:62%; aspect-ratio:3/4; border:6px solid #fff; border-radius:6px; box-shadow:0 12px 30px rgba(0,0,0,.12); overflow:hidden; background:var(--pink-tint); }
+    .collage .shot img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .collage .shot.a{ left:0; top:0; transform:rotate(-3deg); z-index:2; }
+    .collage .shot.b{ right:0; bottom:0; transform:rotate(3deg); }
+    .includes h3{ font-family:var(--serif); font-style:italic; color:var(--pink); font-size:1.5rem; margin:0 0 1rem; }
+    .includes .pill{ display:block; margin:.5rem 0; text-transform:none; letter-spacing:.02em; }
+    .rates{ text-align:right; font-family:var(--hand); color:var(--pink); font-size:1.7rem; margin-top:1rem; }
+
+    /* contact card */
+    .contact{ margin-top:3.5rem; background:#fff; border:1px solid var(--line); border-radius:24px; padding:2.6rem 2rem; box-shadow:0 14px 40px rgba(214,51,132,.08); }
+    .contact h2{ text-align:center; font-family:var(--serif); font-weight:700; color:var(--ink); font-size:clamp(1.8rem,5vw,2.6rem); letter-spacing:.04em; text-transform:uppercase; margin:0 0 1.8rem; }
+    .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .contact-left{ border-right:1px solid var(--line); padding-right:2rem; }
+    .contact-left .bookcall{ font-family:var(--hand); font-size:2rem; color:var(--pink); }
+    .contact-left .lbl{ margin-top:1.1rem; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-2); }
+    .contact-left .email{ font-size:1rem; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:.5rem; }
+    .btn{ display:inline-block; margin-top:1.4rem; background:var(--pink); color:#fff; text-decoration:none; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem; padding:.9em 1.6em; border-radius:999px; box-shadow:0 6px 18px rgba(214,51,132,.28); transition:transform .15s ease, background-color .15s ease; }
+    .btn:hover{ background:var(--pink-deep); transform:translateY(-2px); }
+    .socials a{ display:flex; align-items:center; gap:.8rem; margin:.7rem 0; color:var(--ink); text-decoration:none; }
+    .socials .dot{ width:34px; height:34px; border-radius:50%; background:var(--pink-tint); color:var(--pink); display:grid; place-items:center; font-weight:700; font-size:.8rem; flex:none; }
+    .socials a:hover .dot{ background:var(--pink); color:#fff; }
+    .socials .u{ font-size:.9rem; letter-spacing:.04em; }
+    .signoff{ text-align:right; font-family:var(--script); color:var(--pink); font-size:2.2rem; margin-top:1rem; }
+
+    @media (max-width:760px){
+      .hero{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+      .hero-name{ text-align:center; }
+      .about{ grid-template-columns:1fr; } .about .kicker{ position:static; display:block; text-align:right; }
+      .vids{ grid-template-columns:1fr; max-width:340px; margin:0 auto; }
+      .pillgrid{ grid-template-columns:1fr; }
+      .includes{ grid-template-columns:1fr; } .collage{ min-height:420px; max-width:360px; margin:0 auto; }
+      .contact-grid{ grid-template-columns:1fr; } .contact-left{ border-right:0; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:1.6rem; }
+    }
+  </style>
 </head>
 <body>
   <a class="back" href="index.html">&larr; back home</a>
-  <!-- Blank canvas for: my social media. Build this page later. -->
 
-  <script src="script.js"></script>
+  <div class="strip">
+    <span>Issue 001 &middot; 2026</span>
+    <span class="keys">
+      <span>Brand Collaborations</span>
+      <span>Content Creation</span>
+      <span>UGC</span>
+    </span>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="arch slot-box">
+        <img class="slot" src="portfolio/hero.jpg" alt="Lara" />
+        <div class="ph"><span class="ico">&#128247;</span><span>add your photo</span><code>portfolio/hero.jpg</code></div>
+      </div>
+      <div class="hero-name">
+        <div class="eyebrow">Featured Creator</div>
+        <div class="first">Lara</div>
+        <div class="last">Hopf</div>
+        <div class="tag">UGC Creator</div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ME ============ -->
+    <section class="sec">
+      <div class="about">
+        <span class="kicker">about me</span>
+        <div>
+          <h3>Meet the Creator</h3>
+          <p>Hello, my name is Lara! I am a 21 year old girl who loves tech and traveling. I built two apps, and love trying out new apps and products, as well as events! I moved to Toronto 4 months ago and love exploring the city.</p>
+          <p>I studied to be a biologist, worked in various labs, and am taking part in a biology competition finale this fall. I'm traveling the next few months and would love to display your product in my content. With me you will always get the most authentic, natural videos.</p>
+        </div>
+        <div class="vslot slot-box">
+          <video class="slot" playsinline controls preload="metadata" poster="portfolio/intro-poster.jpg">
+            <source src="portfolio/intro.mp4" type="video/mp4" />
+          </video>
+          <div class="ph"><span class="ico">&#9654;</span><span>add your intro video</span><code>portfolio/intro.mp4</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEOS ============ -->
+    <section class="sec">
+      <div class="sec-head"><h2>Videos</h2></div>
+      <p class="vids-note"><span class="script-accent">organic or paid ads</span></p>
+
+      <div class="vids">
+        <!-- row 1 -->
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-1.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-1.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-2.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-2.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-3.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-3.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+        <!-- row 2 -->
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-4.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-4.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-5.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-5.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline controls preload="metadata"><source src="portfolio/videos/video-6.mp4" type="video/mp4" /></video>
+            <div class="ph"><span class="ico">&#9654;</span><span>add video</span><code>videos/video-6.mp4</code></div>
+          </div>
+          <div class="label">Ad or Organic</div>
+          <div class="cap">Write the type of video (product demonstration, aesthetic video…)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="sec">
+      <div class="sec-head"><h2>My Services</h2></div>
+
+      <div class="svc-panel">
+        <p class="title">&middot; UGC photos &amp; videos &middot;</p>
+        <div class="pillgrid">
+          <div class="pill">Concept and Script</div>
+          <div class="pill">UGC Photos</div>
+          <div class="pill">UGC Ads</div>
+          <div class="pill">Product Photography</div>
+          <div class="pill">Organic Content</div>
+          <div class="pill">Content Bundles</div>
+          <div class="pill">Voiceover Videos</div>
+          <div class="pill">Monthly Retainer</div>
+        </div>
+      </div>
+
+      <div class="includes">
+        <div class="collage">
+          <div class="shot a slot-box">
+            <img class="slot" src="portfolio/service-1.jpg" alt="" />
+            <div class="ph"><span class="ico">&#128247;</span><code>service-1.jpg</code></div>
+          </div>
+          <div class="shot b slot-box">
+            <img class="slot" src="portfolio/service-2.jpg" alt="" />
+            <div class="ph"><span class="ico">&#128247;</span><code>service-2.jpg</code></div>
+          </div>
+        </div>
+        <div>
+          <h3>One UGC video includes:</h3>
+          <div class="pill">Vertical format (9:16)</div>
+          <div class="pill">Research on branding &amp; concepts</div>
+          <div class="pill">Scriptwriting</div>
+          <div class="pill">Video filming &amp; editing</div>
+          <div class="pill">2 revisions if needed</div>
+          <p class="rates">ask me for my rates!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact">
+      <h2>Let's Work Together!</h2>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="bookcall">book a call!</div>
+          <div class="lbl">Email</div>
+          <div class="email"><!-- edit this: --> hello@youremail.com</div>
+          <a class="btn" href="https://cal.com/hopflara" target="_blank" rel="noopener">Book a call with me</a>
+        </div>
+        <div class="socials">
+          <!-- edit the usernames / links below -->
+          <a href="#"><span class="dot">TT</span><span class="u">your username</span></a>
+          <a href="#"><span class="dot">IG</span><span class="u">your username</span></a>
+          <a href="#"><span class="dot">YT</span><span class="u">your username</span></a>
+          <a href="#"><span class="dot">X</span><span class="u">your username</span></a>
+        </div>
+      </div>
+      <div class="signoff">Lara</div>
+    </section>
+
+  </div>
+
+  <script>
+    // Reveal a photo/video once it actually loads; otherwise keep the placeholder.
+    document.querySelectorAll(".slot-box").forEach(function (box) {
+      var media = box.querySelector(".slot");
+      if (!media) return;
+      var ok = function () { box.classList.add("filled"); };
+      if (media.tagName === "IMG") {
+        if (media.complete && media.naturalWidth > 0) ok();
+        media.addEventListener("load", ok);
+      } else {
+        media.addEventListener("loadeddata", ok);
+      }
+    });
+  </script>
 </body>
 </html>
