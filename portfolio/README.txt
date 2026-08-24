@@ -9,10 +9,10 @@ PHOTOS (this folder, portfolio/):
   service-2.jpeg     -> second photo in the Services collage (portrait)
 
 INTRO VIDEO (this folder, portfolio/):
-  intro.mov         -> your "Meet the Creator" intro video
+  intro.mp4         -> your "Meet the Creator" intro video
 
 EXAMPLE VIDEOS (portfolio/videos/):
-  video-1.mov ... video-6.mov  -> the six Ad-or-Organic example videos
+  video-1.mp4 ... video-6.mp4  -> the six Ad-or-Organic example videos
                                   (vertical 9:16 works best)
 
 Tip: keep videos small (a few MB each) so the page loads fast. MP4 (H.264)
