@@ -98,11 +98,13 @@
     .play-cta:hover .play{ transform:scale(1.07); }
     .intro-cta{ background:linear-gradient(180deg, rgba(214,51,132,.94), rgba(176,33,103,.97)); }
     .intro-cta .cta-text{ font-family:var(--hand); color:#fff; font-weight:700; font-size:1.6rem; line-height:1.15; text-shadow:0 1px 6px rgba(0,0,0,.4); }
-    .reel-cta{ background:linear-gradient(180deg, rgba(58,42,51,.08), rgba(214,51,132,.34)); }
+    .reel-cta{ background:linear-gradient(180deg, rgba(58,42,51,.04), rgba(58,42,51,.24)); }
     .reel-cta .play{ width:52px; height:52px; font-size:1.2rem; }
 
     /* videos grid */
-    .vids{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    .vids{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media (max-width:900px){ .vids{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:520px){ .vids{ grid-template-columns:1fr; max-width:340px; margin-inline:auto; } }
     .vcard .reel{ position:relative; width:100%; aspect-ratio:9/16; border-radius:14px; overflow:hidden; background:var(--pink-tint); border:1px solid var(--line); }
     .vcard .reel video{ width:100%; height:100%; object-fit:cover; display:block; }
     .vcard .label{ margin-top:.7rem; text-align:center; background:var(--pink-tint); color:var(--pink-deep); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.72rem; padding:.5rem; border-radius:8px; }
@@ -146,7 +148,6 @@
       .hero{ grid-template-columns:1fr; justify-items:center; text-align:center; }
       .hero-name{ text-align:center; }
       .about{ grid-template-columns:1fr; } .about .kicker{ position:static; display:block; text-align:right; }
-      .vids{ grid-template-columns:1fr; max-width:340px; margin:0 auto; }
       .pillgrid{ grid-template-columns:1fr; }
       .includes{ grid-template-columns:1fr; } .collage{ min-height:420px; max-width:360px; margin:0 auto; }
       .contact-grid{ grid-template-columns:1fr; } .contact-left{ border-right:0; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:1.6rem; }
@@ -212,7 +213,7 @@
         <!-- row 1 -->
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-1.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-1.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Organic - Events</div>
@@ -220,7 +221,7 @@
         </div>
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-1.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-1.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Organic - Events</div>
@@ -228,7 +229,7 @@
         </div>
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-2.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-2.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Paid Ad - Tech</div>
@@ -236,7 +237,7 @@
         </div>
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-3.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-3.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Organic - In Store</div>
@@ -245,7 +246,7 @@
         <!-- row 2 -->
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-4.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-4.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Organic</div>
@@ -253,7 +254,7 @@
         </div>
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-5.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-5.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Paid Ad</div>
@@ -261,11 +262,19 @@
         </div>
         <div class="vcard">
           <div class="reel slot-box">
-            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-6.mp4" type="video/mp4" /></video>
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-6.mp4#t=0.1" type="video/mp4" /></video>
             <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
           </div>
           <div class="label">Organic</div>
           <div class="cap">Event summary for an event app, <br />LYTT</div>
+        </div>
+        <div class="vcard">
+          <div class="reel slot-box">
+            <video class="slot" playsinline preload="metadata"><source src="portfolio/video-7.mp4#t=0.1" type="video/mp4" /></video>
+            <button class="play-cta reel-cta" type="button"><span class="play">&#9654;</span></button>
+          </div>
+          <div class="label">Organic</div>
+          <div class="cap">Write the type of video (edit me)</div>
         </div>
       </div>
     </section>

@@ -11,10 +11,12 @@ PHOTOS (this folder, portfolio/):
 INTRO VIDEO (this folder, portfolio/):
   intro.mp4         -> your "Meet the Creator" intro video
 
-EXAMPLE VIDEOS (portfolio/videos/):
-  video-1.mp4 ... video-6.mp4  -> the six Ad-or-Organic example videos
-                                  (vertical 9:16 works best)
+EXAMPLE VIDEOS (this folder, portfolio/):
+  video-1.mp4 ... video-7.mp4  -> the Videos grid (8 cards, 2 rows of 4;
+                                  video-1 is shown twice). Vertical 9:16 works best.
+  The still shown before you press play is the video's own first frame — no
+  separate thumbnail needed. (Want a custom cover image instead? ask Claude.)
 
 Tip: keep videos small (a few MB each) so the page loads fast. MP4 (H.264)
-plays everywhere. You can also edit the captions, the "AD OR ORGANIC" labels,
-the email, and the social usernames directly in social.html.
+plays everywhere. You can also edit the captions and labels, the email, and
+the social links directly in social.html.
