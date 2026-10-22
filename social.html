@@ -171,7 +171,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="arch slot-box">
-        <img class="slot" src="portfolio/hero.jpeg" alt="Lara" />
+        <img class="slot" src="portfolio/hero.jpeg" alt="Lara" width="800" height="1067" fetchpriority="high" decoding="async" />
         <div class="ph"><span class="ico">&#128247;</span><span>add your photo</span><code>portfolio/hero.jpeg</code></div>
       </div>
       <div class="hero-name">
@@ -371,6 +371,47 @@
         vid.addEventListener("ended", function () { btn.style.display = ""; vid.controls = false; });
       }
     });
+
+    // Background preload: once the intro video starts playing, quietly
+    // download the example reels one after another so they play instantly
+    // when the visitor is done watching the intro. Loading them one at a
+    // time keeps the intro itself smooth (no bandwidth fight).
+    (function () {
+      var introVid = document.querySelector(".intro-cta")
+        ? document.querySelector(".intro-cta").closest(".slot-box").querySelector("video")
+        : null;
+      var reels = Array.prototype.slice
+        .call(document.querySelectorAll(".reel-cta"))
+        .map(function (b) { return b.closest(".slot-box").querySelector("video"); })
+        .filter(Boolean);
+      if (!reels.length) return;
+
+      var started = false;
+      function preloadNext(i) {
+        if (i >= reels.length) return;
+        var v = reels[i];
+        v.preload = "auto";
+        var go = function () { preloadNext(i + 1); };
+        // Move to the next once this one has buffered enough (or errors out).
+        v.addEventListener("canplaythrough", go, { once: true });
+        v.addEventListener("error", go, { once: true });
+        // Safety net so one slow/odd file can't stall the whole queue.
+        setTimeout(go, 8000);
+        try { v.load(); } catch (e) { go(); }
+      }
+      function kickoff() {
+        if (started) return;
+        started = true;
+        preloadNext(0);
+      }
+
+      if (introVid) {
+        introVid.addEventListener("playing", kickoff, { once: true });
+      }
+      // Fallback: if there's no intro to watch, start preloading shortly
+      // after the page settles so reels are still ready on first tap.
+      window.addEventListener("load", function () { setTimeout(kickoff, 2500); });
+    })();
   </script>
 </body>
 </html>
